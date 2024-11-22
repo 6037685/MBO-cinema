@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile   # Gebruik Dockerfile
+    container_name: php-web
+    ports:
+      - "8080:80"
+    volumes:
+      - ./html:/var/www/html   # html is de map op de host, /var/www/html is de map in de container
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: mysql:8.1
+    container_name: mysql-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: phplessen
+      MYSQL_USER: phples
+      MYSQL_PASSWORD: phples
+    ports:
+      - "3306:3306"
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - app-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: phpmyadmin
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+      - "8081:80"
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+volumes:
+  db_data:
+
+networks:
+  app-network:
