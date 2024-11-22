@@ -1,0 +1,16 @@
+@charset "UTF-8";
+* {
+    margin: 0;
+    padding: 0;
+}
+header{
+    background-color:green;
+    height: 19vh;
+}
+main{
+    min-height: 90vh;
+}
+footer{
+    height: 19vh;
+    background-color: black;
+}
