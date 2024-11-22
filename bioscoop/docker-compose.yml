@@ -4,12 +4,12 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile   # Gebruik Dockerfile
+      dockerfile: Dockerfile
     container_name: php-web
     ports:
       - "8080:80"
     volumes:
-      - ./html:/var/www/html   # html is de map op de host, /var/www/html is de map in de container
+      - ./html:/var/www/html
     depends_on:
       - db
     networks:
@@ -23,7 +23,6 @@ services:
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
-
     ports:
       - "3306:3306"
     volumes:
@@ -36,7 +35,7 @@ services:
     container_name: phpmyadmin
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
     ports:
       - "8081:80"
     depends_on:
