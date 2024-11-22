@@ -4,25 +4,25 @@ services:
   web:
     build:
       context: .
-      dockerfile: Dockerfile
-    container_name: php-web
+      dockerfile: Dockerfile   # Gebruik Dockerfile
+    container_name: Cinema
     ports:
       - "8080:80"
     volumes:
-      - ./html:/var/www/html
+      - ./html:/var/www/html   # html is de map op de host, /var/www/html is de map in de container
     depends_on:
       - db
     networks:
       - app-network
-
   db:
     image: mysql:8.1
-    container_name: mysql-db
+    container_name: mysql-db-Cinema
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}
       MYSQL_USER: ${MYSQL_USER}
       MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+
     ports:
       - "3306:3306"
     volumes:
@@ -32,10 +32,10 @@ services:
 
   phpmyadmin:
     image: phpmyadmin/phpmyadmin
-    container_name: phpmyadmin
+    container_name: phpmyadmin-Cinema
     environment:
       PMA_HOST: db
-      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_PASSWORD: root
     ports:
       - "8081:80"
     depends_on:
