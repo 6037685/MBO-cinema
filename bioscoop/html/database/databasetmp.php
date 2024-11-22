@@ -2,9 +2,9 @@
 
 // verbinding van database
 $host = 'db';
-$dbname = 'phplessen';
-$username = 'root';
-$password = 'root';
+$dbname = 'Cinema';
+$username = 'Cinema';
+$password = 'mD.d/bq4[8MRUycz';
 
 try { // verbind het
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);
