@@ -11,25 +11,11 @@
         <script defer src="js/index.js"></script>
     </head>
     <body>
-        <section id="headerBox">
-            <header id="head">
-                <nav class="menu">
-                    <h1>MBO<br>Cinema</h1>
-                    <article>
-                        <a>text</a>
-                        <a>text</a>
-                        <a>text</a>
-                        <a>text</a>
-                    </article>
-                    <article></article>
-                    <article></article>
-                    <article>
-                        <img width="45px" src="img/Search.png" alt="Search icoon">
-                        <button>Inloggen</button>
-                    </article>
-                </nav>
-            </header>
-        </section>
+       <?php 
+       
+       include 'header.php';
+       
+       ?>
 <main>
     <section class="Placeholder">
         <h1></h1>
@@ -66,22 +52,10 @@
             </article>
         </section>
 </main>
-        <footer>
-            <article id="socials">
-                <a href="#"><img src="img/Insta.png" alt="Instagram"></a>
-                <a href="#"><img src="img/Twitter.png" alt="Twitter"></a>
-                <a href="#"><img src="img/LinkedIn.png" alt="LinkedIn"></a>
-            </article>
-            <article>
-                <a href="#">Home</a>
-                <a href="#">Films</a>
-                <a href="#">Beveiliging</a></a>
-                <a href="#">Contact</a>
-            </article>
-            <article></article>
-            <article>
-                <h1>© 2024-MBO | MBOCinemas.nl</h1>
-            </article>
-        </footer>
+    <?php 
+    
+    include 'footer.php';
+
+    ?>
     </body>
 </html>
