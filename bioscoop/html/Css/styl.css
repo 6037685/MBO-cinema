@@ -395,3 +395,11 @@ button[type="submit"]:hover {
         font-size: 14px;
     }
 }
+.regist-section {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(117, 117, 15); 
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
