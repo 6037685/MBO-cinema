@@ -7,8 +7,8 @@
             <article>
                 <a href="#">Home</a>
                 <a href="#">Films</a>
-                <a href="#">Beveiliging</a></a>
-                <a href="#">Contact</a>
+                <a href="#">Beveiliging</a>
+                <a href="contact.php">Contact</a>
             </article>
             <article></article>
             <article>

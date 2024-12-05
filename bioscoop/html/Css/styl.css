@@ -48,11 +48,17 @@ button:hover{
 }
 .menu{
     display: grid;
-    grid-template-columns: 1fr 1fr 2fr 1fr .2fr .8fr;
+    grid-template-columns: 1fr 2fr 2fr 1fr .2fr .8fr;
     flex-direction: row;
     height: 8vh;
     padding-left: 20px;
     align-items: center;
+}
+#button{
+    font-size: 1em;
+}
+.menu a{
+    padding: 5px;
 }
 .Placeholder{
     background-image: url('../img/Placeholder.png');
