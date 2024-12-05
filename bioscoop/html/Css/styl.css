@@ -124,3 +124,130 @@ footer{
     width: 2em;
     padding: 10px;
 }
+
+.contact-container {
+    margin-top: 20vh;
+    background-color: #212121;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    text-align: center;
+}
+
+.contact-layer{
+    background-color: #1a2e2d;
+    font-size: 2vh;
+    padding: 0.5vh;
+    margin-bottom: 2vh;
+}
+
+.contact-container h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+}
+
+.contact-container p {
+    font-size: 1em;
+    margin-bottom: 20px;
+    color: #aaaaaa;
+}
+
+.content {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.contact-info {
+    flex: 1;
+    min-width: 300px;
+    text-align: left;
+}
+
+.contact-info h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: aquamarine;
+}
+
+.contact-info p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.maps {
+    background-color: #333333;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+.contact-form {
+    flex: 1;
+    min-width: 300px;
+}
+
+.contact-form h2 {
+    font-size: 1.8em;
+    margin-bottom: 10px;
+    color: aquamarine;
+}
+
+.contact-form form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: white;
+    font-size: 1em;
+}
+
+.contact-form textarea {
+    resize: none;
+    height: 100px;
+}
+
+.contact-form button {
+    padding: 12px 20px;
+    background-color: aquamarine;
+    border: none;
+    border-radius: 5px;
+    color: #161616;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.contact-form button:hover {
+    background-color: #4cafab;
+}
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-info, .contact-form {
+        text-align: center;
+    }
+
+    .maps {
+        width: 100%;
+    }
+}
