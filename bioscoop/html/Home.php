@@ -8,18 +8,17 @@
         <meta name="keywords" content="">
         <title>Mbo cinema</title>
         <link rel="stylesheet" type="text/css" href="Css/styl.css">
+        <link rel="stylesheet" type="text/css" href="Css/Slider.css">
         <script defer src="js/index.js"></script>
     </head>
     <body>
-       <?php 
-       
-       include 'header.php';
-       
-       ?>
+            <?php 
+                    include_once 'header.php';
+            ?>
 <main>
-    <section class="Placeholder">
+    <Section class="Placeholder"> 
         <h1></h1>
-    </section>
+    </Section>
     <section class="movie-container">
         <h1 id="h1-films">
             <a href="#">Populaire Films<i>></i></a>
@@ -53,9 +52,7 @@
         </section>
 </main>
     <?php 
-    
-    include 'footer.php';
-
+        include_once 'footer.php';
     ?>
     </body>
 </html>

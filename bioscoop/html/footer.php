@@ -1,4 +1,4 @@
-<footer>
+        <footer>
             <article id="socials">
                 <a href="#"><img src="img/Insta.png" alt="Instagram"></a>
                 <a href="#"><img src="img/Twitter.png" alt="Twitter"></a>
