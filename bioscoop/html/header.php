@@ -3,17 +3,15 @@
                 <nav class="menu">
                     <h1>MBO<br>Cinema</h1>
                     <article>
-                        <a>text</a>
-                        <a>text</a>
-                        <a>text</a>
-                        <a>text</a>
+                        <a href="home.php">Home</a>
+                        <a href="#">Films</a>
+                        <a href="#">Beveiliging</a>
+                        <a href="contact.php">Contact</a>
                     </article>
                     <article></article>
                     <article></article>
-                    <article>
-                        <img width="45px" src="img/Search.png" alt="Search icoon">
-                        <button>Inloggen</button>
-                    </article>
+                        <img id="search-icon" src="img/Search.png" alt="Search icoon">
+                    <a id="button" href="login.php"><button>Inloggen</button></a>
                 </nav>
             </header>
         </section>
