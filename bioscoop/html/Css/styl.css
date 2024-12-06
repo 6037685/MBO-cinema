@@ -54,6 +54,7 @@ header{
     position: fixed;
     left: 50%;
     transform: translate(-50%);
+    z-index: 10;
 }
 
 #loginButton{
@@ -311,6 +312,53 @@ footer{
         margin-top: 2vh;
     }
 /* Einde Films Pagina */
+
+/* Beveiliging Pagina */
+#privacyBeleid{
+    display: grid;
+    margin-top: 10vh;
+    
+}
+#privacyBeleid article{
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    margin-top: 2em;
+    width: 95%;
+    background-color: rgb(32, 32, 32) ;
+    
+}
+#slogan{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+    filter: drop-shadow(0px 0px 10px #000000);
+    background-color: #1a2e2d !important;
+    height: 10vh;
+    width: 100% !important;
+}
+#privacyBeleid h2, #privacyBeleid p, #privacyBeleid li{
+    color: white;
+}
+#slogan h1{
+    font-weight: 800;
+    font-size: 1.5em;
+    
+}
+
+#privacyBeleid li{
+    list-style: none;
+}
+.privacyBox{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    text-align: center;
+    
+}
+.privacyBox article{
+    justify-self: center;
+    filter: drop-shadow(0px 0px 10px rgb(0, 0, 0));
+}
+/* Einde Beveiliging Pagina */
 
 
 /* Login & Register Pagina */
