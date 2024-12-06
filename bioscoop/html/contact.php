@@ -8,13 +8,13 @@
         <meta name="keywords" content="">
         <title>Mbo cinema</title>
         <link rel="stylesheet" type="text/css" href="Css/styl.css">
+        <script defer src="index.js"></script>
     </head>
     <body>
        <?php 
-       
-       include 'header.php';
-       
+            include 'header.php';
        ?>
+       
  <main>
     <section class="contact-container">
         <article class='contact-layer'>
