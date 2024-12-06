@@ -4,7 +4,7 @@
                 <a href="#"><img src="img/Twitter.png" alt="Twitter"></a>
                 <a href="#"><img src="img/LinkedIn.png" alt="LinkedIn"></a>
             </article>
-            <article>
+            <article class='nav-footer'>
                 <a href="#">Home</a>
                 <a href="#">Films</a>
                 <a href="#">Beveiliging</a>
