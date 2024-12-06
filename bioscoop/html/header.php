@@ -11,7 +11,7 @@
                     <h1>MBO<br>Cinema</h1>
                     <article id="menu-A">
                         <a href="home.php">Home</a>
-                        <a href="#">Films</a>
+                        <a href="films.php">Films</a>
                         <a href="#">Beveiliging</a>
                         <a href="contact.php">Contact</a>
                     </article>
