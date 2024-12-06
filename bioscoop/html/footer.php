@@ -5,7 +5,7 @@
                 <a href="#"><img src="img/LinkedIn.png" alt="LinkedIn"></a>
             </article>
             <article class='nav-footer'>
-                <a href="#">Home</a>
+                <a href="home.php">Home</a>
                 <a href="#">Films</a>
                 <a href="#">Beveiliging</a>
                 <a href="contact.php">Contact</a>
