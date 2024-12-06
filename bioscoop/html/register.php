@@ -20,7 +20,7 @@
                     <h2>registreer form</h2>
                     <form>
                         <label for="username">Gebruikersnaam</label>
-                        <input type="text" id="username" name="username" placeholder="Gebruikersnaam">`
+                        <input type="text" id="username" name="username" placeholder="Gebruikersnaam">
                         
                         <label for="Email">Email-adres</label>
                         <input type="Email" id="Email" name="Email" placeholder="Email-adres">

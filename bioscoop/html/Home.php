@@ -9,14 +9,11 @@
         <title>Mbo cinema</title>
         <link rel="stylesheet" type="text/css" href="Css/styl.css">
         <link rel="stylesheet" type="text/css" href="Css/overlay.css">
-        <script defer src="js/index.js"></script>
+        <script defer src="index.js"></script>
     </head>
     <body>
             <?php 
                     include_once 'header.php';
-            ?>
-            <?php
-                        require_once 'overlay.php' 
             ?>
 <main>
     <Section class="Placeholder"> 
