@@ -280,17 +280,7 @@ footer{
 /* Einde Contact */
 
 /* Overlay */
-.overlay{
-    z-index: 2;
-    background-color: #211f1f;
-    
-    width: 100vw;
-    height: 100vh;
-    position: fixed;
-    left: 50%;
-    opacity: 90%;
-    filter: drop-shadow(0px 0px 10px #000000);
-}
+
 
 /* Einde Overlay */
 
