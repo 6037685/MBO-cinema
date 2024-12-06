@@ -32,7 +32,7 @@
                         <button type="submit">Login</button>
                     </form>
                     <article class="register">
-                        <p><a href="#">Geen account? registreer nu</a></p>
+                        <p><a href="register.php">Geen account? registreer nu</a></p>
                     </article>
                 </article>
             </section>

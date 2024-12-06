@@ -15,6 +15,9 @@
             <?php 
                     include_once 'header.php';
             ?>
+            <?php
+                        require_once 'overlay.php' 
+            ?>
 <main>
     <Section class="Placeholder"> 
         <h1></h1>

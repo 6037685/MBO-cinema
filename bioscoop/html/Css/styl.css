@@ -7,15 +7,29 @@
     font-family: "Poppins", sans-serif;
 
 }
+
+h1{
+    color: white;
+}
+a{
+    color: white;
+    font-size: 1.5em;
+    text-decoration: none;
+    font-weight: bold;
+}
 p{
     color: white;
 }
 body{
     background-color: #161616;
-    display: grid;
-    grid-template-rows: auto 1fr auto;
     overflow-x: hidden;
 }
+
+
+/* Header */
+
+
+
 #headerBox{
     display: grid;
     justify-content: center;
@@ -31,10 +45,10 @@ header{
     transform: translate(-50%);
 }
 
-button{
+#loginButton{
     background-color: #633a49;
     border: none;
-    font-size: .9em;
+    font-size: .7em;
     border-radius: 40px;
     color: white;
     width: 6em;
@@ -43,7 +57,7 @@ button{
     grid-column-end: -1;
 }
 
-button:hover{
+#loginButton:hover{
     filter: drop-shadow(0px 0px 10px #ffffff);
 }
 .menu{
@@ -54,12 +68,27 @@ button:hover{
     padding-left: 20px;
     align-items: center;
 }
-#button{
-    font-size: 1em;
+
+#search{
+    font-size: 1.5em;
 }
+.menu article a:hover{
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    color: black;
+}
+
 .menu a{
     padding: 5px;
 }
+
+
+/* Einde Header */
+
+
+/* Begin Main */
+
+
 .Placeholder{
     background-image: url('../img/Placeholder.png');
     background-color: white;
@@ -106,15 +135,7 @@ button:hover{
 #search-icon{
     width: 40px;
 }
-h1{
-    color: white;
-}
-a{
-    color: white;
-    font-size: 1.5em;
-    text-decoration: none;
-    font-weight: bold;
-}
+
 a:hover{
     color: aquamarine;
 }
@@ -122,6 +143,12 @@ a:hover{
 main{
     min-height: 100vh;
 }
+
+/*Einde Main */
+
+/*Begin Footer */
+
+
 footer{
     height: 10vh;
     background-color: #9a7883;
@@ -134,6 +161,9 @@ footer{
     width: 2em;
     padding: 10px;
 }
+
+/* Contact Pagina */
+
 
 .contact-container {
     margin-top: 20vh;
@@ -247,20 +277,28 @@ footer{
     background-color: #4cafab;
 }
 
-@media (max-width: 768px) {
-    .content {
-        flex-direction: column;
-        align-items: center;
-    }
+/* Einde Contact */
 
-    .contact-info, .contact-form {
-        text-align: center;
-    }
-
-    .maps {
-        width: 100%;
-    }
+/* Overlay */
+.overlay{
+    z-index: 2;
+    background-color: #211f1f;
+    
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    left: 50%;
+    opacity: 90%;
+    filter: drop-shadow(0px 0px 10px #000000);
 }
+
+/* Einde Overlay */
+
+
+/* Login & Register Pagina */
+
+
+
 
 .split-section {
     display: flex;
@@ -360,6 +398,56 @@ button[type="submit"]:hover {
     text-decoration: underline;
 }
 
+.regist-section {
+    flex: 1; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(117, 117, 15); 
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.off-screen-menu {
+    background-color:  rgb(34, 37, 49);
+    height: 100vh;
+    width: 100%;
+    max-width: 450px;
+    position: fixed;
+    top: 0;
+    right: -450px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    justify-content: center;
+    text-align: center;
+    font-size: 3rem;
+    transition: .3s ease;
+}
+.off-screen-menu.active {
+    right: 0;
+}
+ 
+ 
+
+
+/* Media Query */
+
+
+@media (max-width: 768px) {
+    .content {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-info, .contact-form {
+        text-align: center;
+    }
+
+    .maps {
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .split-section {
         flex-direction: column;
@@ -389,17 +477,95 @@ button[type="submit"]:hover {
 
     .login-form input {
         font-size: 14px;
-    }
+    }   
 
     button[type="submit"] {
         font-size: 14px;
     }
+
+    #loginWrapper{
+        display: none;
+    }
+    #loginWrapper button{
+        display: none;
+    }
+
+    #hamburgerWrapper{
+        display: block !important;
+        place-self: center;
+        margin-right: 2vw;
+    }
+    #hamburgerWrapper button{
+        display: block !important;
+        width: 3em;
+        height: 3em;
+        font-size: 1em;
+        place-self: center;
+        margin-right: 2vw;
+    }
+    #menu-A{
+        display: none;
+    }
+    .info-section{
+        display: grid;
+        grid-template-rows: repeat(3, 1fr);
+        justify-content: center; 
+    }
+    #info-article{
+        width: 50vw;  
+    }
+    #info-article img{
+        width : 30vw;
+        height: auto;
+    }
+    .movie:nth-child(6){
+        display: none;
+    }
+    .movie:nth-child(5){
+        display: none;
+    }
+    .movie:nth-child(4){
+        display: none;
+    }
+
+    .menu{
+        grid-template-columns: 1fr 2fr .5fr .5fr .3fr;
+    }
+    
 }
-.regist-section {
-    flex: 1; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: rgb(117, 117, 15); 
-    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+
+#hamburgerWrapper{
+    display: none;
 }
+#hamburgerWrapper button{
+    display: none;
+}
+
+
+@media only screen and (max-width: 1200px) {
+    .menu{
+        grid-template-columns: 1fr 2fr .5fr .5fr .3fr 1fr;
+    }
+    a{
+        font-size: 1em !important;
+    }
+    .movie{
+        width: 20vw;
+        margin-right: 2vw;
+        height: 12vh;
+    }
+    .movie:nth-child(6){
+        display: none;
+    }
+  }
+  @media only screen and (max-width: 900px) {
+    .movie:nth-child(6){
+        display: none;
+    }
+    .movie:nth-child(5){
+        display: none;
+    }
+    
+
+  }
+
