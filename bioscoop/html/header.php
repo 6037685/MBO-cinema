@@ -13,7 +13,7 @@
                         <a><lable id="search">&#x1F50E;&#xFE0E;</lable></a>
                     <a id="loginWrapper" href="login.php"><button id="loginButton">Inloggen</button></a>
                     <label id="hamburgerWrapper"><button id="loginButton">☰</button></label>
-                    
+                    <script defer src="js/index.js"></script>
                 </nav>
             </header>
         </section>
