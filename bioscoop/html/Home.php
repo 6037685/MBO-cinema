@@ -8,7 +8,7 @@
         <meta name="keywords" content="">
         <title>Mbo cinema</title>
         <link rel="stylesheet" type="text/css" href="Css/styl.css">
-        <link rel="stylesheet" type="text/css" href="Css/Slider.css">
+        <link rel="stylesheet" type="text/css" href="Css/overlay.css">
         <script defer src="js/index.js"></script>
     </head>
     <body>
