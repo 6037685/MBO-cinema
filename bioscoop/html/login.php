@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="Log in bij Mbo Cinema om toegang te krijgen tot je account.">
     <meta name="author" content="Kishan & Julian">
-    <meta name="keywords" content="">
-    <title>Mbo cinema</title>
+    <meta name="keywords" content="inloggen, Mbo Cinema, account, login">
+    <title>Mbo cinema inloggen</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
     <script defer src="index.js"></script>

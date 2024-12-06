@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
+    <meta name="description" content="Registreer je bij Mbo Cinema en geniet van alle voordelen.">
     <meta name="author" content="Kishan & Julian">
-    <meta name="keywords" content="">
-    <title>Mbo cinema</title>
+    <meta name="keywords" content="registreren, Mbo Cinema, account aanmaken, aanmelden">
+    <title>Mbo cinema registreren</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
 </head>
 <body>

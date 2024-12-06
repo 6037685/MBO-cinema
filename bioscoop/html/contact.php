@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
+        <meta name="description" content="Neem contact met ons op via onze contactpagina.">
         <meta name="author" content="Kishan & Julian">
-        <meta name="keywords" content="">
-        <title>Mbo cinema</title>
+        <meta name="keywords" content="contact, klantenservice, ondersteuning">
+        <title>Contact pagina</title>
         <link rel="stylesheet" type="text/css" href="Css/styl.css">
         <script defer src="index.js"></script>
     </head>
@@ -22,7 +22,6 @@
         <p>Lorem ipsum dolor sit amet et delectus accommodare his consul copiosae legendo.</p>
         </article>
         <article class="content">
-            <!-- Contactinformatie -->
             <article class="contact-info">
                 <h2>Contact informatie</h2>
                 <p>📞 0612345678</p>

@@ -3,10 +3,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="">
+        <meta name="description" content="Lees ons privacybeleid en ontdek hoe we uw gegevens beschermen.">
         <meta name="author" content="Kishan & Julian">
-        <meta name="keywords" content="">
-        <title>Mbo cinema</title>
+        <meta name="keywords" content="privacybeleid, gegevensbescherming, privacy">
+        <title>Privacybeleid</title>
         <link rel="stylesheet" type="text/css" href="Css/styl.css">
         <link rel="stylesheet" type="text/css" href="Css/overlay.css">
         <script defer src="index.js"></script>
