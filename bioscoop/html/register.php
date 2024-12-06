@@ -36,7 +36,7 @@
                         <button type="submit">registreer</button>
                     </form>
                     <article class="register">
-                        <p><a href="#">Account? Login nu!</a></p>
+                        <p><a href="login.php">Account? Login nu!</a></p>
                     </article>
                 </article>
             </section>

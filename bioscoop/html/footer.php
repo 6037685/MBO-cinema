@@ -6,8 +6,8 @@
             </article>
             <article class='nav-footer'>
                 <a href="home.php">Home</a>
-                <a href="#">Films</a>
-                <a href="#">Beveiliging</a>
+                <a href="films.php">Films</a>
+                <a href="Beveiliging.php">Beveiliging</a>
                 <a href="contact.php">Contact</a>
             </article>
             <article></article>
