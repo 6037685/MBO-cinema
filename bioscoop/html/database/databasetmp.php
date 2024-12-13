@@ -11,9 +11,7 @@ try { // verbind het
     
 
     $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
-
-    echo "verbinding is goed";
+    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_BOTH);
 
 }   catch (PDOException $e){
     echo 'Verbinding is niet goed' . $e->getMessage();

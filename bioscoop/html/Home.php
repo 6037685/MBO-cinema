@@ -21,7 +21,7 @@
     </Section>
     <section class="movie-container">
         <h1 id="h1-films">
-            <a href="#">Populaire Films<i>></i></a>
+            <a href="films.php">Populaire Films<i>></i></a>
         </h1>
             <section class="article-container">
                 <article class="movie"></article>

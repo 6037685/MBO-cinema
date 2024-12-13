@@ -457,6 +457,12 @@ button[type="submit"]:hover {
 .register a:hover {
     text-decoration: underline;
 }
+.error{
+    color: red;
+}
+.success{
+    color: rgb(44, 238, 44);
+}
 
 .regist-section {
     flex: 1; 

@@ -1,3 +1,5 @@
+<?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -12,7 +14,9 @@
     <script defer src="index.js"></script>
 </head>
 <body>
-    <?php include 'header.php'; ?>
+    <?php
+        include 'header.php';
+     ?>
 
     <main class="split-section">
         <article class="blank-section"></article>
@@ -20,17 +24,24 @@
             <section class="login-container">
                 <article class="login-form">    
                     <h2>Login form</h2>
-                    <form>
+                    <form method="POST" action="login.php">
                         <label for="username">Gebruikersnaam</label>
-                        <input type="text" id="username" name="username" placeholder="Gebruikersnaam">
+                        <input type="text" id="username" name="username" placeholder="Gebruikersnaam" required>
                         
                         <label for="password">Wachtwoord</label>
-                        <input type="password" id="password" name="password" placeholder="Wachtwoord">
+                        <input type="password" id="password" name="password" placeholder="Wachtwoord" required>
                         
                         <article class="forgot-password">
                             <a href="#">Wachtwoord vergeten?</a>
                         </article>
-                        
+                        <article>
+                        <?php 
+                            if (isset($_SESSION['message'])) {
+                                echo $_SESSION['message'];
+                                unset($_SESSION['message']); // Wis de sessie, zodat het bericht niet steeds blijft staan
+                            }
+                        ?>
+                        </article>
                         <button type="submit">Login</button>
                     </form>
                     <article class="register">
@@ -41,6 +52,8 @@
         </article>
         <article class="image-section"></article>
     </main>
+
+    
 
     <?php include 'footer.php'; ?>
 </body>
