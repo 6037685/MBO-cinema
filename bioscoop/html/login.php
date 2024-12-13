@@ -53,7 +53,37 @@
         <article class="image-section"></article>
     </main>
 
+    <?php
     
+        require 'database/databasetmp.php';
+
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {        
+
+            $username1 = htmlspecialchars($_POST['username']);
+            $password1 = $_POST['password'];
+    
+            
+            $query = "SELECT password FROM users WHERE username = :username";
+            
+            $statement = $pdo->prepare($query);
+            $statement->bindParam(':username', $username1);
+            $statement->execute();
+    
+            $resultaat = $statement->fetch();
+
+            if ($resultaat) {
+                $EncryptedPassword = $resultaat['password'];
+    
+                if (password_verify($password1, $EncryptedPassword)) {
+                    $_SESSION['message'] = '<p class="success">Inloggen succesvol.</p>';
+                } else {
+                    $_SESSION['message'] = '<p class="error">Wachtwoord/Gebruikersnaam is incorrect.</p>';
+                }
+            } else {
+                $_SESSION['message'] = '<p class="error">Wachtwoord/Gebruikersnaam is incorrect.</p>';
+            }
+        }
+     ?>
 
     <?php include 'footer.php'; ?>
 </body>
