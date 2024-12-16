@@ -2,9 +2,6 @@
 session_start(); // Start the session at the beginning of the script
 
 // Check if the user is logged in
-echo $_SESSION['loggedin'] ? 'Logged in' : 'Not logged in';
-echo $_SESSION['username'] ? ' as ' . $_SESSION['username'] : '';
-echo $_SESSION['role'] ? ' with role ' . $_SESSION['role'] : '';
 ?>
 
 <!DOCTYPE html>
