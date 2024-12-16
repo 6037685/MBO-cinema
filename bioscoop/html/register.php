@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -69,6 +72,7 @@
                 echo " vul aub alle velden in";
             } else {
 
+                // Encrypt the password
                 $opties = [
                     'cost' => 13, 
                 ];

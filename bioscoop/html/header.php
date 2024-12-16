@@ -6,21 +6,27 @@
 <?php require_once 'overlay.php'; ?>
 
 <section id="headerBox">
-            <header id="head">
-                <nav class="menu">
-                    <h1>MBO<br>Cinema</h1>
-                    <article id="menu-A">
-                        <a href="home.php">Home</a>
-                        <a href="films.php">Films</a>
-                        <a href="Beveiliging.php">Beveiliging</a>
-                        <a href="contact.php">Contact</a>
-                    </article>
-                    <article></article>
-                    <article></article>
-                        <a><lable id="search">&#x1F50E;&#xFE0E;</lable></a>
-                    <a id="loginWrapper" href="login.php"><button id="loginButton">Inloggen</button></a>
-                    <label id="hamburgerWrapper"><button id="loginButton">☰</button></label>
-                    <script defer src="index.js"></script>
-                </nav>
-            </header>
-        </section>
+    <header id="head">
+        <nav class="menu">
+            <h1>MBO<br>Cinema</h1>
+            <article id="menu-A">
+                <a href="home.php">Home</a>
+                <a href="films.php">Films</a>
+                <a href="Beveiliging.php">Beveiliging</a>
+                <a href="contact.php">Contact</a>
+            </article>
+            <article></article>
+            <article></article>
+            <a><label id="search">&#x1F50E;&#xFE0E;</label></a>
+            
+            <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                <a id="loginWrapper" href="account.php"><button id="loginButton">Account</button></a>
+            <?php else: ?>
+                <a id="loginWrapper" href="login.php"><button id="loginButton">Inloggen</button></a>
+            <?php endif; ?>
+            
+            <label id="hamburgerWrapper"><button id="loginButton">☰</button></label>
+            <script defer src="index.js"></script>
+        </nav>
+    </header>
+</section>

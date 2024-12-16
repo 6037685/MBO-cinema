@@ -4,8 +4,10 @@ session_start();
 include 'header.php';
 require 'database/databasetmp.php';
 
+// Check if the user is already logged in
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {        
 
+    // Get the input from the form
     $username1 = htmlspecialchars($_POST['username']);
     $password1 = $_POST['password'];
 
@@ -16,21 +18,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $adminStatement->execute();
     $adminResult = $adminStatement->fetch();
 
+    // check if the input matches with the beheerder table
     if ($adminResult) {
         $adminEncryptedPassword = $adminResult['password'];
 
+        // Check if the password matches with the encrypted password
         if (password_verify($password1, $adminEncryptedPassword)) {
             $_SESSION['message'] = '<p class="success">Admin login successful.</p>';    
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $username1;
-            $_SESSION['role'] = 'admin'; 
+            $_SESSION['role'] = 'beheerder'; // Store the role as beheerder
             header('Location: home.php'); 
             exit(); 
         } else {
             $_SESSION['message'] = '<p class="error">Incorrect username/password.</p>';
         }
     } else {
-        // If not an admin, check the users table
+        // If not an beheerder, check the users table
         $query = "SELECT password FROM users WHERE username = :username";
         $statement = $pdo->prepare($query);
         $statement->bindParam(':username', $username1);
@@ -90,6 +94,7 @@ ob_end_flush();
                             <a href="#">Wachtwoord vergeten?</a>
                         </article>
                         <article>
+                        <!-- display fout message -->
                         <?php 
                             if (isset($_SESSION['message'])) {
                                 echo $_SESSION['message'];
@@ -107,8 +112,6 @@ ob_end_flush();
         </article>
         <article class="image-section"></article>
     </main>
-
-    
     <?php include 'footer.php'; ?>
 </body>
 </html>

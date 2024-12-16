@@ -7,7 +7,11 @@
             <a href="films.php">Films</a>
             <a href="contact.php">Contact</a>
             <a href="Beveiliging.php">Beveiliging</a>
-        
-            <a href="login.php"><button id="loginButton">Inloggen</button></a>
+
+            <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+                <a href="login.php"><button id="loginButton">Account</button></a>
+            <?php else: ?>
+                <a href="account.php"><button id="loginButton">Inloggen</button></a>
+            <?php endif; ?>
         </article>
 </section>
