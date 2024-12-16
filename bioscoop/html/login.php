@@ -1,4 +1,62 @@
-<?php session_start(); ?>
+<?php
+ob_start(); // Start output buffering
+session_start();
+include 'header.php';
+require 'database/databasetmp.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {        
+
+    $username1 = htmlspecialchars($_POST['username']);
+    $password1 = $_POST['password'];
+
+    // Check if the input matches with the admin table
+    $adminQuery = "SELECT password FROM beheerder WHERE username = :username";
+    $adminStatement = $pdo->prepare($adminQuery);
+    $adminStatement->bindParam(':username', $username1);
+    $adminStatement->execute();
+    $adminResult = $adminStatement->fetch();
+
+    if ($adminResult) {
+        $adminEncryptedPassword = $adminResult['password'];
+
+        if (password_verify($password1, $adminEncryptedPassword)) {
+            $_SESSION['message'] = '<p class="success">Admin login successful.</p>';    
+            $_SESSION['loggedin'] = true;
+            $_SESSION['username'] = $username1;
+            $_SESSION['role'] = 'admin'; 
+            header('Location: home.php'); 
+            exit(); 
+        } else {
+            $_SESSION['message'] = '<p class="error">Incorrect username/password.</p>';
+        }
+    } else {
+        // If not an admin, check the users table
+        $query = "SELECT password FROM users WHERE username = :username";
+        $statement = $pdo->prepare($query);
+        $statement->bindParam(':username', $username1);
+        $statement->execute();
+        $resultaat = $statement->fetch();
+
+        if ($resultaat) {
+            $EncryptedPassword = $resultaat['password'];
+
+            if (password_verify($password1, $EncryptedPassword)) {
+                $_SESSION['message'] = '<p class="success">Login successful.</p>';    
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $username1;
+                $_SESSION['role'] = 'user'; // Store the role as user
+                header('Location: home.php');
+                exit(); 
+            } else {
+                $_SESSION['message'] = '<p class="error">Incorrect username/password.</p>';
+            }
+        } else {
+            $_SESSION['message'] = '<p class="error">Incorrect username/password.</p>';
+        }
+    }
+}
+ob_end_flush(); 
+?>
 
 <!DOCTYPE html>
 <html lang="nl">
@@ -14,10 +72,7 @@
     <script defer src="index.js"></script>
 </head>
 <body>
-    <?php
-        include 'header.php';
-     ?>
-
+    
     <main class="split-section">
         <article class="blank-section"></article>
         <article class="form-section">
@@ -38,11 +93,11 @@
                         <?php 
                             if (isset($_SESSION['message'])) {
                                 echo $_SESSION['message'];
-                                unset($_SESSION['message']); // Wis de sessie, zodat het bericht niet steeds blijft staan
+                                unset($_SESSION['message']); 
                             }
                         ?>
                         </article>
-                        <button type="submit">Login</button>
+                            <button type="submit">Login</button>
                     </form>
                     <article class="register">
                         <p><a href="register.php">Geen account? registreer nu</a></p>
@@ -53,38 +108,7 @@
         <article class="image-section"></article>
     </main>
 
-    <?php
     
-        require 'database/databasetmp.php';
-
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {        
-
-            $username1 = htmlspecialchars($_POST['username']);
-            $password1 = $_POST['password'];
-    
-            
-            $query = "SELECT password FROM users WHERE username = :username";
-            
-            $statement = $pdo->prepare($query);
-            $statement->bindParam(':username', $username1);
-            $statement->execute();
-    
-            $resultaat = $statement->fetch();
-
-            if ($resultaat) {
-                $EncryptedPassword = $resultaat['password'];
-    
-                if (password_verify($password1, $EncryptedPassword)) {
-                    $_SESSION['message'] = '<p class="success">Inloggen succesvol.</p>';
-                } else {
-                    $_SESSION['message'] = '<p class="error">Wachtwoord/Gebruikersnaam is incorrect.</p>';
-                }
-            } else {
-                $_SESSION['message'] = '<p class="error">Wachtwoord/Gebruikersnaam is incorrect.</p>';
-            }
-        }
-     ?>
-
     <?php include 'footer.php'; ?>
 </body>
 </html>

@@ -14,7 +14,6 @@
        <?php 
             include 'header.php';
        ?>
-       
  <main>
     <section class="contact-container">
         <article class='contact-layer'>

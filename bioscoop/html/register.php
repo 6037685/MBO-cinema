@@ -10,8 +10,7 @@
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
 </head>
 <body>
-    <?php 
-        $message = '';
+    <?php
         include 'header.php'; 
     ?>
 
@@ -67,6 +66,7 @@
 
             if (empty($username1) || empty($email) || empty($password1) || empty($telefoonnmr)) {
                 $message = '<p class="error">Vul aub alle velden in.</p>';
+                echo " vul aub alle velden in";
             } else {
 
                 $opties = [
@@ -92,9 +92,6 @@
             
             }
         }
-            
-    
-            
             
     ?>
 
