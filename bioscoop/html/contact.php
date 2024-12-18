@@ -11,7 +11,7 @@ session_start();
         <meta name="keywords" content="contact, klantenservice, ondersteuning">
         <title>Contact pagina</title>
         <link rel="stylesheet" type="text/css" href="Css/styl.css">
-        <script defer src="index.js"></script>
+        <script defer src="js/index.js"></script>
     </head>
     <body>
        <?php 

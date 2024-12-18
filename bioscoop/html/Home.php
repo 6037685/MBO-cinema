@@ -15,7 +15,7 @@ session_start(); // Start the session at the beginning of the script
     <title>Home pagina</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
-    <script defer src="index.js"></script>
+    <script defer src="js/index.js"></script>
 </head>
 <body>
     <?php include_once 'header.php'; ?>

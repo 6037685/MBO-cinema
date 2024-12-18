@@ -14,6 +14,9 @@
                 <a href="films.php">Films</a>
                 <a href="Beveiliging.php">Beveiliging</a>
                 <a href="contact.php">Contact</a>
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'beheerder'): ?>
+                    <a href="Beheer.php" style="color: #633a49;">Admin</a>
+                <?php endif; ?>
             </article>
             <article></article>
             <article></article>
@@ -26,7 +29,7 @@
             <?php endif; ?>
             
             <label id="hamburgerWrapper"><button id="loginButton">☰</button></label>
-            <script defer src="index.js"></script>
+            <script defer src="js/index.js"></script>
         </nav>
     </header>
 </section>

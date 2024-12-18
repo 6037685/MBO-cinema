@@ -14,13 +14,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Welkom op de homepagina van Mbo Cinema. Ontdek ons aanbod en meer!">
+    <meta name="description" content="Welkom op de accountpagina van Mbo Cinema. Bekijk hier je accountinformatie, reserveringen en meer!">
     <meta name="author" content="Kishan & Julian">
-    <meta name="keywords" content="home, Mbo Cinema, films, bioscoop">
+    <meta name="keywords" content="Account, Mbo Cinema, films, bioscoop">
     <title>Home pagina</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
-    <script defer src="index.js"></script>
+    <script defer src="js/index.js"></script>
 </head>
 <body>
     <?php include_once 'header.php'; ?>

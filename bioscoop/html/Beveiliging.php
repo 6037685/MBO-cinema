@@ -12,7 +12,7 @@ session_start();
         <title>Privacybeleid</title>
         <link rel="stylesheet" type="text/css" href="Css/styl.css">
         <link rel="stylesheet" type="text/css" href="Css/overlay.css">
-        <script defer src="index.js"></script>
+        <script defer src="js/index.js"></script>
     </head>
     <body>
             <?php 

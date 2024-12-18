@@ -71,13 +71,13 @@ ob_end_flush();
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Login page">
+    <meta name="description" content="Login page Mbo Cinema">
     <meta name="author" content="Kishan & Julian">
     <meta name="keywords" content="login, Mbo Cinema">
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
-    <script defer src="index.js"></script>
+    <script defer src="js/index.js"></script>
 </head>
 <body>
     
