@@ -731,16 +731,7 @@ button[type="submit"]:hover {
     background-color: #212121;
     color: white;
 }
-label{
-    color: white !important;
-}
-input{
-    color: white !important;
-}
-select {
-    color: white !important;
-    background-color: black;
-}
+
 select option{
     color: black;
 }
