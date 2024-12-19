@@ -3,8 +3,8 @@
 // verbinding van database
 $host = 'db';
 $dbname = 'Cinema';
-$username = 'Cinema';
-$password = 'mD.d/bq4[8MRUycz';
+$username = 'root';
+$password = 'root';
 
 try { // verbind het
     $pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

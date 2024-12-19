@@ -1,13 +1,9 @@
 <?php
     session_start(); // Start the session at the beginning of the script
 
-    if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
-        // Destroy the session and redirect to the homepage
-        session_destroy();
-        header('Location: login.php');
-        exit();
-    }
-?>
+    require 'database/Logout.php';
+    
+    ?>
                 
 <!DOCTYPE html>
 <html lang="nl">

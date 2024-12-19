@@ -1,6 +1,6 @@
 <?php
 session_start();
-require 'database/databasetmp.php'; // Database connection
+require 'database/filminfoDatabase.php'; // Database connection
 
 // Check if the movie ID is set in the URL and fetch the movie details. If not, display an error message.
 // htmlspecialchars() is used to prevent XSS attacks by escaping special characters.
