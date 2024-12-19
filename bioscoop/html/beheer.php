@@ -4,7 +4,7 @@ require 'database/databasetmp.php'; // Database connection
 
 // Check if the user is an admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'beheerder') {
-    echo '<p class="error">U heeft geen toegang tot deze pagina.</p>';
+    header('Location: home.php');
     exit();
 }
 
@@ -37,9 +37,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $statement->bindParam(':src', $src);
 
     if ($statement->execute()) {
-        echo '<p class="success">Film succesvol opgeslagen.</p>';
+        header('Location: beheer.php');
+        $_SESSION['bericht'] = '<p class="success">Film succesvol opgeslagen.</p>';
+        exit();
     } else {
-        echo '<p class="error">Er is een fout opgetreden bij het opslaan van de film.</p>';
+        $_SESSION['bericht'] = '<p class="error">Er is een fout opgetreden bij het opslaan van de film.</p>';
+        header('Location: beheer.php');
+        exit();
     }
 }
 
@@ -51,9 +55,13 @@ if (isset($_GET['delete'])) {
     $statement->bindParam(':id', $id, PDO::PARAM_INT);
 
     if ($statement->execute()) {
-        echo '<p class="success">Film succesvol verwijderd.</p>';
+        $_SESSION['bericht'] = '<p class="success">Film succesvol verwijderd.</p>';
+        header('Location: beheer.php');
+        exit();
     } else {
-        echo '<p class="error">Er is een fout opgetreden bij het verwijderen van de film.</p>';
+        $_SESSION['bericht'] = '<p class="error">Er is een fout opgetreden bij het verwijderen van de film.</p>';
+        header('Location: beheer.php');
+        exit();
     }
 }
 
@@ -62,9 +70,10 @@ try {
     $query = "SELECT * FROM movies";
     $statement = $pdo->prepare($query);
     $statement->execute();
-    $movies = $statement->fetchAll(); // Use the default fetch mode set in databasetmp.php
+    $movies = $statement->fetchAll(); 
 } catch (PDOException $e) {
     echo '<p class="error">Er is een fout opgetreden: ' . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . '</p>';
+    exit();
 }
 ?>
 
@@ -78,80 +87,89 @@ try {
     <meta name="keywords" content="beheer, films, bioscoop, Mbo Cinema">
     <title>Beheer Films - Mbo Cinema</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
-    <link rel="stylesheet" type="text/css" href="Css/overlay.css">
+    <link rel="stylesheet" type="text/css" href="Css/overlay.cssIt">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
     <script defer src="js/index.js"></script>
 </head>
 <body>
     <?php include_once 'header.php'; ?>
     <main>
         <section class="beheer-container">
-            <h1>Beheer Films</h1>
-            <form method="POST" action="beheer.php">
-                <input type="hidden" name="id" id="movie-id">
-                <label for="naam">Naam:</label>
-                <input type="text" name="naam" id="naam" required>
-                <label for="beschrijving">Beschrijving:</label>
-                <textarea name="beschrijving" id="beschrijving" required></textarea>
-                <label for="duur">Duur:</label>
-                <input type="text" name="duur" id="duur" required>
-                <label for="datum">Datum:</label>
-                <input type="date" name="datum" id="datum" required>
-                <label for="rating">Rating:</label>
-                <input type="text" name="rating" id="rating" required>
-                <label for="src">Afbeelding URL:</label>
-                <input type="text" name="src" id="src" required>
-                <button type="submit">Opslaan</button>
-            </form>
+            <article class="beheer-layer">
+                <form method="POST" action="beheer.php" class="beheer-form">
+                    <h2>Film Toevoegen</h2>
+                    <p>Voeg een nieuwe film toe of bewerk een bestaande film.</p>
+                    <input type="hidden" name="id" id="movie-id">
+                    <label for="naam">Naam:</label>
+                    <input type="text" name="naam" id="naam" required>
+                    <label for="beschrijving">Beschrijving: <i>max 500 woorden</i></label>
+                    <textarea name="beschrijving" id="beschrijving" required></textarea>
+                    <label for="duur">Duur:</label>
+                    <input type="text" name="duur" id="duur" required>
+                    <label for="datum">Datum:</label>
+                    <input type="date" name="datum" id="datum" required>
+                    <label for="rating">Rating:</label>
+                    <input type="text" name="rating" id="rating" required>
+                    <label for="src">Afbeelding URL:</label>
+                    <p style="color: aquamarine;"><i>Voeg de URL van de afbeelding toe!</i></p>
+                    <p style="color: aquamarine;"><i>Bijvoorbeeld: <br> https://m.media-amazon.com/images/M/MV5BYWI2ZWE1NDktYmI1MC00MDAzLWI3MGYtMTgwMjkzNmJjY2ZlXkEyXkFqcGc@._V1_.jpg</i></p>
+                    <input type="text" name="src" id="src" required>
 
-            <h2>Bestaande Films</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Naam</th>
-                        <th>Beschrijving</th>
-                        <th>Duur</th>
-                        <th>Datum</th>
-                        <th>Rating</th>
-                        <th>Afbeelding</th>
-                        <th>Acties</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (!empty($movies)): ?>
-                        <?php foreach ($movies as $movie): ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo htmlspecialchars($movie['beschrijving'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo htmlspecialchars($movie['duur'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo htmlspecialchars($movie['datum'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><?php echo htmlspecialchars($movie['rating'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                <td><img src="<?php echo htmlspecialchars($movie['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?>" width="100"></td>
-                                <td>
-                                    <button onclick="editMovie(<?php echo htmlspecialchars(json_encode($movie), ENT_QUOTES, 'UTF-8'); ?>)">Bewerken</button>
-                                    <a href="beheer.php?delete=<?php echo htmlspecialchars($movie['id'], ENT_QUOTES, 'UTF-8'); ?>" onclick="return confirm('Weet je zeker dat je deze film wilt verwijderen?')">Verwijderen</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
+                    <?php
+                        if (isset($_SESSION['bericht'])) {
+                            echo $_SESSION['bericht'];
+                            unset($_SESSION['bericht']); 
+                        }
+                    ?>
+                    <button type="submit">Opslaan</button>
+                </form>
+            </article>
+
+            <article class="movies-layer">
+                <h2>Bestaande Films</h2>
+                <table id="movies-table">
+                    <thead>
                         <tr>
-                            <td colspan="7">Geen films gevonden.</td>
+                            <th>Naam</th>
+                            <th>Beschrijving</th>
+                            <th>Duur</th>
+                            <th>Datum</th>
+                            <th>Rating</th>
+                            <th>Afbeelding</th>
+                            <th>Acties</th>
                         </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        <?php if (!empty($movies)): ?>
+                            <?php foreach ($movies as $movie): ?>
+                                <tr>
+                                    <td><?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><?php echo htmlspecialchars($movie['beschrijving'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><?php echo htmlspecialchars($movie['duur'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><?php echo htmlspecialchars($movie['datum'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><?php echo htmlspecialchars($movie['rating'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                    <td><img src="<?php echo htmlspecialchars($movie['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?>" width="100"></td>
+                                    <td>
+                                        <button class="movie-button" onclick="editMovie(<?php echo htmlspecialchars(json_encode($movie), ENT_QUOTES, 'UTF-8'); ?>)">Bewerken</button>
+                                        <form method="GET" action="beheer.php" style="display:inline;">
+                                            <input type="hidden" name="delete" value="<?php echo htmlspecialchars($movie['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                                            <button type="submit" class="movie-button" onclick="return confirm('Weet je zeker dat je deze film wilt verwijderen?')">Verwijderen</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        <?php else: ?>
+                            <tr>
+                                <td colspan="7">Geen films gevonden.</td>
+                            </tr>
+                        <?php endif; ?>
+                    </tbody>
+                </table>
+            </article>
         </section>
     </main>
     <?php include_once 'footer.php'; ?>
-    <script>
-        function editMovie(movie) {
-            document.getElementById('movie-id').value = movie.id;
-            document.getElementById('naam').value = movie.naam;
-            document.getElementById('beschrijving').value = movie.beschrijving;
-            document.getElementById('duur').value = movie.duur;
-            document.getElementById('datum').value = movie.datum;
-            document.getElementById('rating').value = movie.rating;
-            document.getElementById('src').value = movie.src;
-        }
-    </script>
 </body>
 </html>

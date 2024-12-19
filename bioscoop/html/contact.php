@@ -45,9 +45,7 @@ session_start();
         </section>
     </main>
     <?php 
-    
-    include 'footer.php';
-
+        include 'footer.php';
     ?>
     </body>
 </html>

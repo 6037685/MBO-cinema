@@ -562,10 +562,10 @@ button[type="submit"]:hover {
 }
 .accountNavWrapper{
     display: flex;
-    justify-content: flex-start; /* Align to the left */
-    align-items: center; /* Center vertically */
-    height: 100vh; /* Full height of the viewport */
-    padding-left: 20px; /* Optional: Add some padding to the left */
+    justify-content: flex-start; 
+    align-items: center; 
+    height: 100vh; 
+    padding-left: 20px; 
 }
 .accountNav{
     background-color: #211f1f;
@@ -616,7 +616,6 @@ button[type="submit"]:hover {
     color: white;
     width: 50vw;
     padding: 20px;
-    /* background-color: #282649; */
 }
 .accountContent section{
     margin-bottom: 20px;
@@ -658,6 +657,152 @@ button[type="submit"]:hover {
 
 
 /* einde account Pagina */
+
+/* Begin Admin */
+
+.beheer-container{
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.beheer-form{
+    padding: 20px;
+    color: white;
+    width: 30%;
+    align-items: left;
+    background-color: #212121;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.beheer-layer{
+    display: flex;
+    justify-content: center;
+}
+.beheer-form input,
+.beheer-form textarea{
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #333333;
+    color: white;
+    font-size: 1em;
+    resize: none;
+}
+.beheer-form button{
+    padding: 12px 20px;
+    background-color: #633a49;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+
+}
+.beheer-form button:hover {
+    background-color: #633a4979;
+}
+.beheer-form p {
+    word-wrap: break-word;
+}
+.beheer-form h2{
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: aquamarine;
+}
+.beheer-form label{
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+.movies-layer{
+    color: aquamarine;
+}
+
+/* Beheer films Sorting */
+#movies-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    background-color: #212121;
+    color: white;
+}
+label{
+    color: white !important;
+}
+input{
+    color: white !important;
+}
+select {
+    color: white !important;
+    background-color: black;
+}
+select option{
+    color: black;
+}
+
+
+#movies-table thead {
+    background-color: #333333 !important;
+}
+
+#movies-table th, #movies-table td {
+    padding: 12px 15px;
+    border: 1px solid #444444;
+    text-align: left;
+}
+
+#movies-table th {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+#movies-table tbody tr {
+    border-bottom: 1px solid #444444;
+}
+
+#movies-table tbody tr:nth-of-type(even) {
+    background-color: #2a2a2a;
+}
+
+#movies-table tbody tr:hover {
+    background-color: #444444 !important;
+}
+
+#movies-table img {
+    max-width: 100px;
+    height: auto;
+    border-radius: 5px;
+}
+.odd{
+    background-color: #2a2a2a !important;
+}
+.even{
+    background-color: #212121 !important;
+}
+.movie-button{
+    padding: 12px 20px;
+    background-color: #333;
+    border: none;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: 1em !important;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100% !important;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.movie-button:hover{
+    background-color: #777 !important;
+
+}
+
 
 
 /* Media Query */
@@ -761,6 +906,8 @@ button[type="submit"]:hover {
     .privacyBox{
         grid-template-columns: repeat(1,1fr);
     }
+
+    /* Beheer pagina responsive */
     
 }
 
@@ -790,6 +937,10 @@ button[type="submit"]:hover {
     #privacyBeleid{
         margin-bottom: 10vh;
     }
+    .beheer-form{
+        width: 75%;
+        font-size: 1em;
+    }
   }
 
   @media only screen and (max-width: 900px) {
@@ -799,7 +950,14 @@ button[type="submit"]:hover {
     .movie:nth-child(5){
         display: none;
     }
-    
+    /* Beheer pagina responsive */
+    .beheer-form{
+        width: 75%;
+        font-size: 1em;
+    }
+    .beheer-form p {
+        word-wrap: break-word;
+    }
 
   }
 
@@ -831,6 +989,45 @@ button[type="submit"]:hover {
         display: block; 
         font-size: 1em; 
     }
-    
+}
+@media screen and (max-width: 875px) {
+    #movies-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 
+    #movies-table thead, #movies-table tbody, #movies-table th, #movies-table td, #movies-table tr {
+        display: block;
+    }
+
+    #movies-table thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    #movies-table tr {
+        border: 1px solid #444444;
+        margin-bottom: 10px;
+    }
+
+    #movies-table td {
+        border: none;
+        border-bottom: 1px solid #444444;
+        position: relative;
+        white-space: normal;
+        text-align: left;
+    }
+
+    #movies-table td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+        content: attr(data-label);
+        font-weight: bold;
+    }
 }
