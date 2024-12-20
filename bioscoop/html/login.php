@@ -16,6 +16,7 @@ require 'database/loginDatabase.php';
     <title>Login</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
+    <script defer src='js/loginCheck.js'></script>
     <script defer src="js/index.js"></script>
 </head>
 <body>

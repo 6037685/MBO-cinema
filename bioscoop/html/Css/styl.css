@@ -515,6 +515,34 @@ button[type="submit"]:hover {
 .register a:hover {
     text-decoration: underline;
 }
+
+/* Add to your existing Css/styl.css file */
+
+input.valid {
+    border: 2px solid green;
+}
+
+input.invalid {
+    border: 2px solid red;
+}
+
+input.valid:focus {
+    outline-color: green;
+}
+
+input.invalid:focus {
+    outline-color: red;
+}
+
+input:required:invalid {
+    border-color: red;
+}
+
+input:required:valid {
+    border-color: green;
+}
+
+
 .error{
     color: red;
 }

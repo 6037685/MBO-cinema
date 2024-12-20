@@ -27,19 +27,28 @@ require 'database/registerDatabase.php';
                     <h2>Registreer formulier</h2>
                     <form class="registerform" method="POST">
                         <label for="username">Gebruikersnaam</label>
-                        <input type="text" class="Gebruikersnaam" name="username" placeholder="Gebruikersnaam" required>
+                        <input type="text" class="Gebruikersnaam" name="username" placeholder="Gebruikersnaam">
+                        <p class="error-message username-error" style="color: red;"></p> 
+
                         
                         <label for="Email">Email-adres</label>
-                        <input type="email" class="email" name="Email" placeholder="Email-adres" required>
+                        <input type="email" class="email" name="Email" placeholder="Email-adres">
+                        <p class="error-message email-error" style="color: red;"></p> 
+
 
                         <label for="password">Wachtwoord</label>
-                        <input type="password" class="wachtwoord" name="password" placeholder="Wachtwoord" required>
+                        <input type="password" class="wachtwoord" name="password" placeholder="Wachtwoord">
+                        <p class="error-message password-error" style="color: red;"></p> 
+
 
                         <label for="bevestigdWachtwoord">Bevestig Wachtwoord</label>
-                        <input type="password" class="bevestigdWachtwoord" name="bevestigdWachtwoord" placeholder="Bevestig Wachtwoord" required>
+                        <input type="password" class="bevestigdWachtwoord" name="bevestigdWachtwoord" placeholder="Bevestig Wachtwoord">
+                        <p class="error-message confirm-password-error" style="color: red;"></p> 
 
                         <label for="Telefoonnummer">Telefoonnummer</label>
-                        <input type="tel" class="Telefoonnummer" name="Telefoonnummer" placeholder="Telefoonnummer" pattern="[0-9]{10}" minlength="10" maxlength="10" required>
+                        <input type="tel" class="Telefoonnummer" name="Telefoonnummer" placeholder="Telefoonnummer" pattern="[0-9]{10}" minlength="10" maxlength="10">
+                        <p class="error-message phone-error" style="color: red;"></p> 
+
                         
                         <article class="form-message">
                             <?php
