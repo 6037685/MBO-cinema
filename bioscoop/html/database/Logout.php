@@ -1,11 +1,9 @@
 <?php
-
+require_once 'User.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['logout'])) {
-    // Destroy the session and redirect to the homepage
-    session_destroy();
+    User::logout();
     header('Location: login.php');
     exit();
 }
-
 ?>

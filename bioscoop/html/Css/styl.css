@@ -119,6 +119,8 @@ header{
 }
 .article-container{
     display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
 }
 .movie {
     width: 12.5vw;
@@ -1048,5 +1050,22 @@ select option{
         white-space: nowrap;
         content: attr(data-label);
         font-weight: bold;
+    }
+}
+@media (max-width: 1200px) {
+    .movie {
+        width: 20vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .movie {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .movie {
+        width: 45vw;
     }
 }

@@ -2,6 +2,7 @@
 ob_start(); // Start output buffering
 include 'header.php';
 require 'database/databasetmp.php';
+require_once 'User.php'; // Include the User class
 
 // Check if the user is already logged in
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {        
@@ -24,9 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // Check if the password matches with the encrypted password
         if (password_verify($password1, $adminEncryptedPassword)) {
             $_SESSION['message'] = '<p class="success">Admin login successful.</p>';    
-            $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $username1;
-            $_SESSION['email'] = $adminResult['email'];
+            $_SESSION['user'] = new AdminUser($username1, $adminResult['email']); 
             $_SESSION['phone'] = $adminResult['telnmr'];
             $_SESSION['role'] = 'beheerder'; // Store the role as beheerder
             header('Location: home.php'); 
@@ -47,9 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             if (password_verify($password1, $EncryptedPassword)) {
                 $_SESSION['message'] = '<p class="success">Login successful.</p>';    
-                $_SESSION['loggedin'] = true;
-                $_SESSION['username'] = $username1;
-                $_SESSION['email'] = $resultaat['email'];
+                $_SESSION['user'] = new RegularUser($username1, $resultaat['email']); // Use RegularUser class to manage session
                 $_SESSION['phone'] = $resultaat['telnmr'];
                 $_SESSION['role'] = 'user'; // Store the role as user
                 header('Location: home.php');

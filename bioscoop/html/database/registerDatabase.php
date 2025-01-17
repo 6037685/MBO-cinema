@@ -1,6 +1,4 @@
 <?php 
-
-
 require 'database/databasetmp.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

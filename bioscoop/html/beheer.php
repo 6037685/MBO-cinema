@@ -1,6 +1,7 @@
 <?php
 session_start();
 require 'database/databasetmp.php'; // Database connection
+require 'Movie.php'; // Include the Movie class
 
 // Check if the user is an admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'beheerder') {
@@ -8,73 +9,49 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'beheerder') {
     exit();
 }
 
+$movie = new Movie($pdo);
+
 // Handle form submission for creating and updating movies
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $naam = htmlspecialchars($_POST['naam'], ENT_QUOTES, 'UTF-8');
-    $beschrijving = htmlspecialchars($_POST['beschrijving'], ENT_QUOTES, 'UTF-8');
-    $duur = htmlspecialchars($_POST['duur'], ENT_QUOTES, 'UTF-8');
-    $datum = htmlspecialchars($_POST['datum'], ENT_QUOTES, 'UTF-8');
-    $rating = htmlspecialchars($_POST['rating'], ENT_QUOTES, 'UTF-8');
-    $src = htmlspecialchars($_POST['src'], ENT_QUOTES, 'UTF-8');
+    $movie->setNaam(htmlspecialchars($_POST['naam'], ENT_QUOTES, 'UTF-8'));
+    $movie->setBeschrijving(htmlspecialchars($_POST['beschrijving'], ENT_QUOTES, 'UTF-8'));
+    $movie->setDuur(htmlspecialchars($_POST['duur'], ENT_QUOTES, 'UTF-8'));
+    $movie->setDatum(htmlspecialchars($_POST['datum'], ENT_QUOTES, 'UTF-8'));
+    $movie->setRating(htmlspecialchars($_POST['rating'], ENT_QUOTES, 'UTF-8'));
+    $movie->setSrc(htmlspecialchars($_POST['src'], ENT_QUOTES, 'UTF-8'));
 
     if (isset($_POST['id']) && !empty($_POST['id'])) {
         // Update movie
-        $id = htmlspecialchars($_POST['id'], ENT_QUOTES, 'UTF-8');
-        $query = "UPDATE movies SET naam = :naam, beschrijving = :beschrijving, duur = :duur, datum = :datum, rating = :rating, src = :src WHERE id = :id";
-        $statement = $pdo->prepare($query);
-        $statement->bindParam(':id', $id, PDO::PARAM_INT);
+        if ($movie->update(htmlspecialchars($_POST['id'], ENT_QUOTES, 'UTF-8'))) {
+            $_SESSION['bericht'] = '<p class="success">Film succesvol opgeslagen.</p>';
+        } else {
+            $_SESSION['bericht'] = '<p class="error">Er is een fout opgetreden bij het opslaan van de film.</p>';
+        }
     } else {
         // Create new movie
-        $query = "INSERT INTO movies (naam, beschrijving, duur, datum, rating, src) VALUES (:naam, :beschrijving, :duur, :datum, :rating, :src)";
-        $statement = $pdo->prepare($query);
+        if ($movie->create()) {
+            $_SESSION['bericht'] = '<p class="success">Film succesvol opgeslagen.</p>';
+        } else {
+            $_SESSION['bericht'] = '<p class="error">Er is een fout opgetreden bij het opslaan van de film.</p>';
+        }
     }
-
-    $statement->bindParam(':naam', $naam);
-    $statement->bindParam(':beschrijving', $beschrijving);
-    $statement->bindParam(':duur', $duur);
-    $statement->bindParam(':datum', $datum);
-    $statement->bindParam(':rating', $rating);
-    $statement->bindParam(':src', $src);
-
-    if ($statement->execute()) {
-        header('Location: beheer.php');
-        $_SESSION['bericht'] = '<p class="success">Film succesvol opgeslagen.</p>';
-        exit();
-    } else {
-        $_SESSION['bericht'] = '<p class="error">Er is een fout opgetreden bij het opslaan van de film.</p>';
-        header('Location: beheer.php');
-        exit();
-    }
+    header('Location: beheer.php');
+    exit();
 }
 
 // Handle deletion of movies
 if (isset($_GET['delete'])) {
-    $id = htmlspecialchars($_GET['delete'], ENT_QUOTES, 'UTF-8');
-    $query = "DELETE FROM movies WHERE id = :id";
-    $statement = $pdo->prepare($query);
-    $statement->bindParam(':id', $id, PDO::PARAM_INT);
-
-    if ($statement->execute()) {
+    if ($movie->delete(htmlspecialchars($_GET['delete'], ENT_QUOTES, 'UTF-8'))) {
         $_SESSION['bericht'] = '<p class="success">Film succesvol verwijderd.</p>';
-        header('Location: beheer.php');
-        exit();
     } else {
         $_SESSION['bericht'] = '<p class="error">Er is een fout opgetreden bij het verwijderen van de film.</p>';
-        header('Location: beheer.php');
-        exit();
     }
+    header('Location: beheer.php');
+    exit();
 }
 
 // Fetch movies from the database
-try {
-    $query = "SELECT * FROM movies";
-    $statement = $pdo->prepare($query);
-    $statement->execute();
-    $movies = $statement->fetchAll(); 
-} catch (PDOException $e) {
-    echo '<p class="error">Er is een fout opgetreden: ' . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . '</p>';
-    exit();
-}
+$movies = $movie->fetchAll();
 ?>
 
 <!DOCTYPE html>

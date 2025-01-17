@@ -1,8 +1,6 @@
 <?php
 session_start();
 require 'database/loginDatabase.php';
-
-
 ?>
 
 <!DOCTYPE html>
