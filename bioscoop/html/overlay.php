@@ -13,7 +13,7 @@
             <?php else: ?>
                 <a href="login.php"><button id="loginButton">Inloggen</button></a>
             <?php endif; ?>
-            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'beheerder'): ?>
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
                     <a href="Beheer.php" style="color: #633a49;">Admin</a>
                 <?php endif; ?>
         </article>

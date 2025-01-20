@@ -97,15 +97,6 @@ header{
 
 
 /* Begin Main */
-
-
-.Placeholder{
-    background-image: url('../img/Placeholder.png');
-    background-color: white;
-    background-size: contain;
-    height: 60vh;
-    margin-bottom: 10vh;
-}
 .movie-container{
     padding: 2vw;
     display: flex;

@@ -1,15 +1,15 @@
+@ -0,0 +1,151 @@
 <?php
 session_start();
-require 'database/databasetmp.php'; // Database connection
 require 'Movie.php'; // Include the Movie class
 
 // Check if the user is an admin
-if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'beheerder') {
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
     header('Location: home.php');
     exit();
 }
 
-$movie = new Movie($pdo);
+$movie = new Movie();
 
 // Handle form submission for creating and updating movies
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {

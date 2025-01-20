@@ -1,5 +1,6 @@
+
 <?php 
-require 'database/databasetmp.php';
+require_once 'movie.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username1 = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');
@@ -13,28 +14,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             // Check if the username already exists in users table
             $usernameQueryUsers = "SELECT COUNT(*) FROM users WHERE username = :username";
-            $usernameStatementUsers = $pdo->prepare($usernameQueryUsers);
+            $usernameStatementUsers = $this->pdo->prepare($usernameQueryUsers);
             $usernameStatementUsers->bindParam(':username', $username1);
             $usernameStatementUsers->execute();
             $usernameCountUsers = $usernameStatementUsers->fetchColumn();
 
             // Check if the username already exists in beheerder table
             $usernameQueryBeheerder = "SELECT COUNT(*) FROM beheerder WHERE username = :username";
-            $usernameStatementBeheerder = $pdo->prepare($usernameQueryBeheerder);
+            $usernameStatementBeheerder = $this->pdo->prepare($usernameQueryBeheerder);
             $usernameStatementBeheerder->bindParam(':username', $username1);
             $usernameStatementBeheerder->execute();
             $usernameCountBeheerder = $usernameStatementBeheerder->fetchColumn();
 
             // Check if the email already exists in users table
             $emailQueryUsers = "SELECT COUNT(*) FROM users WHERE email = :email";
-            $emailStatementUsers = $pdo->prepare($emailQueryUsers);
+            $emailStatementUsers = $this->pdo->prepare($emailQueryUsers);
             $emailStatementUsers->bindParam(':email', $email);
             $emailStatementUsers->execute();
             $emailCountUsers = $emailStatementUsers->fetchColumn();
 
             // Check if the email already exists in beheerder table
             $emailQueryBeheerder = "SELECT COUNT(*) FROM beheerder WHERE email = :email";
-            $emailStatementBeheerder = $pdo->prepare($emailQueryBeheerder);
+            $emailStatementBeheerder = $this->pdo->prepare($emailQueryBeheerder);
             $emailStatementBeheerder->bindParam(':email', $email);
             $emailStatementBeheerder->execute();
             $emailCountBeheerder = $emailStatementBeheerder->fetchColumn();
@@ -52,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
                 $query = "INSERT INTO users (username, email, password, telnmr) 
                           VALUES (:username, :email, :password, :telefoonnummer)";
-                $statement = $pdo->prepare($query);
+                $statement = $this->pdo->prepare($query);
                 $statement->bindParam(':username', $username1);
                 $statement->bindParam(':email', $email);
                 $statement->bindParam(':password', $EncryptedPassword);

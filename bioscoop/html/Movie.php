@@ -1,6 +1,7 @@
 <?php
+require_once 'database/Database.php';
 
-class Movie {
+class Movie extends Database {
     private $id;
     private $naam;
     private $beschrijving;
@@ -8,11 +9,7 @@ class Movie {
     private $datum;
     private $rating;
     private $src;
-    private $pdo;
 
-    public function __construct($pdo) {
-        $this->pdo = $pdo;
-    }
 
     // Getters and setters
     public function getId() {
