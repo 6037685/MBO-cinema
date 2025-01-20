@@ -1,10 +1,6 @@
 <?php
 session_start(); // Start the session at the beginning of the script
-
-// Check if the user is logged in
-echo $_SESSION['loggedin'] ? 'Logged in' : 'Not logged in';
-echo $_SESSION['username'] ? ' as ' . $_SESSION['username'] : '';
-echo $_SESSION['role'] ? ' with role ' . $_SESSION['role'] : '';
+require_once 'User.php';
 ?>
 
 <!DOCTYPE html>
@@ -18,12 +14,8 @@ echo $_SESSION['role'] ? ' with role ' . $_SESSION['role'] : '';
     <title>Home pagina</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
-<<<<<<< Updated upstream
-    <script defer src="index.js"></script>
-=======
     <link rel="stylesheet" type="text/css" href="Css/Slideshow.css">
     <script defer src="js/index.js"></script>
->>>>>>> Stashed changes
 </head>
 <body>
     <?php include_once 'header.php'; ?>
