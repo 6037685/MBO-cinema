@@ -1,6 +1,7 @@
 <?php
 ob_start(); // Start output buffering
 session_start();
+<<<<<<< Updated upstream
 include 'header.php';
 require 'database/databasetmp.php';
 
@@ -60,6 +61,19 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 }
 ob_end_flush(); 
+=======
+require 'database/Database.php';
+require_once 'User.php';
+
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {        
+    $username = htmlspecialchars($_POST['username']);
+    $password = $_POST['password'];
+
+    $user = new User();
+    $user->login($username, $password);
+}
+>>>>>>> Stashed changes
 ?>
 
 <!DOCTYPE html>
@@ -75,6 +89,7 @@ ob_end_flush();
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
     <script defer src="index.js"></script>
 </head>
+
 <body>
     
     <main class="split-section">

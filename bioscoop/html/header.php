@@ -14,6 +14,12 @@
                 <a href="films.php">Films</a>
                 <a href="Beveiliging.php">Beveiliging</a>
                 <a href="contact.php">Contact</a>
+<<<<<<< Updated upstream
+=======
+                <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                    <a href="Beheer.php" style="color: #633a49;">Admin</a>
+                <?php endif; ?>
+>>>>>>> Stashed changes
             </article>
             <article></article>
             <article></article>

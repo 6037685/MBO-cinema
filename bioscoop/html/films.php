@@ -1,5 +1,16 @@
 <?php
 session_start();
+<<<<<<< Updated upstream
+=======
+
+require_once 'Movie.php';
+
+$movie = new Movie();
+
+$movies = $movie->fetchAll();
+
+
+>>>>>>> Stashed changes
 ?>
 
 <!DOCTYPE html>

@@ -13,5 +13,11 @@
             <?php else: ?>
                 <a href="account.php"><button id="loginButton">Inloggen</button></a>
             <?php endif; ?>
+<<<<<<< Updated upstream
+=======
+            <?php if (isset($_SESSION['role']) && $_SESSION['role'] === 'admin'): ?>
+                    <a href="Beheer.php" style="color: #633a49;">Admin</a>
+                <?php endif; ?>
+>>>>>>> Stashed changes
         </article>
 </section>

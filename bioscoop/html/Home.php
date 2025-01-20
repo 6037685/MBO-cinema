@@ -18,13 +18,18 @@ echo $_SESSION['role'] ? ' with role ' . $_SESSION['role'] : '';
     <title>Home pagina</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
+<<<<<<< Updated upstream
     <script defer src="index.js"></script>
+=======
+    <link rel="stylesheet" type="text/css" href="Css/Slideshow.css">
+    <script defer src="js/index.js"></script>
+>>>>>>> Stashed changes
 </head>
 <body>
     <?php include_once 'header.php'; ?>
     <main>
         <section class="Placeholder"> 
-            <h1></h1>
+            <?php include_once 'Slideshow.php' ?>
         </section>
         <section class="movie-container">
             <h1 id="h1-films">
