@@ -1,3 +1,4 @@
+<?php require_once 'User.php'; ?>
 <head>
 <link rel="stylesheet" type="text/css" href="Css/styl.css">
 <link rel="stylesheet" type="text/css" href="Css/overlay.css">
@@ -22,7 +23,7 @@
             <article></article>
             <a><label id="search">&#x1F50E;&#xFE0E;</label></a>
             
-            <?php if (isset($_SESSION['loggedin']) && $_SESSION['loggedin'] === true): ?>
+            <?php  if (User::isLoggedIn()): ?>
                 <a id="loginWrapper" href="account.php"><button id="loginButton">Account</button></a>
             <?php else: ?>
                 <a id="loginWrapper" href="login.php"><button id="loginButton">Inloggen</button></a>

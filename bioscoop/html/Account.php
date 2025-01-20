@@ -1,14 +1,15 @@
 <?php
-    require 'User.php';
     session_start(); // Start the session at the beginning of the script
-    require 'database/Logout.php';
+    require_once 'User.php';
+    require_once 'database/Logout.php';
 
     if(!User::isLoggedIn()) {
         header('Location: login.php');
         exit();
     }
+    $user = new User();
 
-$user = $_SESSION['user'];
+    $userDetails = $user->fetchUserDetails($_SESSION['user']);
 ?>
                 
 <!DOCTYPE html>
@@ -43,9 +44,9 @@ $user = $_SESSION['user'];
 
                 <section class="accountInfo">
                     <h2>Account Informatie</h2>
-                    <p>Gebruikersnaam: <?php echo $user->getUsername(); ?></p>
-                    <p>Email: <?php echo $user->GetEmail(); ?></p>
-                    <p>Telefoonnummer: <?php echo $_SESSION['phone']; ?></p>
+                    <p>Gebruikersnaam: <?php echo htmlspecialchars($userDetails['username'], ENT_QUOTES, 'UTF-8')?></p>
+                    <p>Email: <?php echo htmlspecialchars($userDetails['email'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <p>Telefoonnummer: <?php echo htmlspecialchars($userDetails['telnmr'], ENT_QUOTES, 'UTF-8'); ?></p>
                 </section>
                 <hr>
                 <section class="wachtwoord">

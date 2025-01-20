@@ -1,4 +1,3 @@
-
 <?php
 abstract class Database  {
     protected $pdo;
@@ -16,10 +15,5 @@ abstract class Database  {
             echo 'Verbinding is niet goed' . $e->getMessage();
         }
     }   
-
-    public function getConnection() {
-        return $this->pdo;
-    }
-  
 }
 ?>

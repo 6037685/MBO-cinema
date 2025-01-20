@@ -1,6 +1,7 @@
 <?php
-require_once 'User.php'; // Include the User class
 session_start(); // Start the session at the beginning of the script
+require_once 'User.php'; // Include the User class
+
 ?>
 
 <!DOCTYPE html>

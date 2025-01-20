@@ -16,7 +16,7 @@ session_start();
     </head>
     <body>
             <?php 
-                    include_once 'header.php';
+                    include 'header.php';
             ?>
 <main>
     <section id="privacyBeleid">

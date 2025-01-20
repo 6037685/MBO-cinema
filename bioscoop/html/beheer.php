@@ -1,7 +1,7 @@
-@ -0,0 +1,151 @@
 <?php
 session_start();
-require 'Movie.php'; // Include the Movie class
+require_once 'Movie.php'; // Include the Movie class
+require_once 'User.php';
 
 // Check if the user is an admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {

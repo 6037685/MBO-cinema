@@ -1,8 +1,6 @@
 <?php
 session_start();
-require 'database/Database.php';
 require_once 'User.php';
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {        
     $username = htmlspecialchars($_POST['username']);
@@ -28,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script defer src="js/index.js"></script>
 </head>
 <body>
-    
+    <?php include 'header.php'; ?>
     <main class="split-section">
         <article class="blank-section"></article>
         <article class="form-section">

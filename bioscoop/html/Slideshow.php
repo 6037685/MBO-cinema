@@ -1,4 +1,3 @@
-
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-element-bundle.min.js"></script>
 <swiper-container class="swiper-container">
   <swiper-slide class="swiper-slide"><img src="img/Movie-Img/Joker-Folie-à-Deux-Background.jpg" alt="Joker"></swiper-slide>
