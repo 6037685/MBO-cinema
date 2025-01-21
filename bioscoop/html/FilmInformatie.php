@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'Movie.php';
+require_once 'Class/Movie.php';
 
 if (isset($_GET['id'])) {
     $movieId = intval($_GET['id']);
@@ -33,13 +33,29 @@ if (isset($_GET['id'])) {
 <body>
     <?php include_once 'header.php'; ?>
     <main>
-        <section class="movie-details">
-            <h1><?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?></h1>
-            <img src="<?php echo htmlspecialchars($movieDetails['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?>">
-            <p><?php echo htmlspecialchars($movieDetails['beschrijving'], ENT_QUOTES, 'UTF-8'); ?></p>
-            <p>Duur: <?php echo htmlspecialchars($movieDetails['duur'], ENT_QUOTES, 'UTF-8'); ?></p>
-            <p>Release Date: <?php echo htmlspecialchars($movieDetails['datum'], ENT_QUOTES, 'UTF-8'); ?></p>
-            <p>Rating: <?php echo htmlspecialchars($movieDetails['rating'], ENT_QUOTES, 'UTF-8'); ?></p>
+        <section id="movie-img">
+            <img src="<?php echo htmlspecialchars($movieDetails['background'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?>">
+        </section>
+        <section class="movie-wrapper">
+            <article class="movie-info">
+                <img src="<?php echo htmlspecialchars($movieDetails['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?>">
+                <article class="movie-title">
+                    <h1><?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?></h1>
+                    <button id="reserveren">Reserveren</button>
+                </article>    
+            </article>
+            <p style="text-align: center;">✔ reserveer gemakkelijk online ✔ Reserveringen gemakkelijk te annuleren ✔ 24/7 Support </p>
+            <article class="movie-desc">
+                <article class="movie-rating">
+                    <p>Rating: <?php echo htmlspecialchars($movieDetails['rating'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <p>Duur: <?php echo htmlspecialchars($movieDetails['duur'], ENT_QUOTES, 'UTF-8'); ?></p>
+                </article>
+                <article class="movie-release">
+                    <p>Release: <?php echo htmlspecialchars($movieDetails['datum'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <br>
+                    <p><?php echo htmlspecialchars($movieDetails['beschrijving'], ENT_QUOTES, 'UTF-8'); ?></p>
+                </article> 
+            </article>
         </section>
     </main>
     <?php include_once 'footer.php'; ?>

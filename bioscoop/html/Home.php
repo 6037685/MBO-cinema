@@ -1,6 +1,16 @@
 <?php
 session_start(); // Start the session at the beginning of the script
-require_once 'User.php'; // Include the User class
+require_once 'Class/User.php'; // Include the User class
+require_once 'Class/Movie.php'; // Include the Movie class
+$movie = new Movie(); // Create a new instance of the Movie class
+
+$recentMovies = $movie->fetchRecent();
+$ratingMovies = $movie->fetchRating();
+
+// debug code
+// echo '<pre>';
+// print_r($ratingMovies);
+// echo '</pre>';
 
 ?>
 
@@ -16,6 +26,7 @@ require_once 'User.php'; // Include the User class
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
     <script defer src="js/index.js"></script>
+    <script defer src="Reserveren.js"></script>
 </head>
 <body>
     <?php include_once 'header.php'; ?>
@@ -23,18 +34,34 @@ require_once 'User.php'; // Include the User class
         <section class="Placeholder"> 
             <h1></h1>
         </section>
-        <section class="movie-container">
-            <h1 id="h1-films">
-                <a href="films.php">Populaire Films<i>></i></a>
+        <section class="recent-movies-container">
+            <h1 id="h1-recent">
+                <a href="#">Populaire Films<i>></i></a>
             </h1>
-            <section class="article-container">
-                <article class="movie"></article>
-                <article class="movie"></article>
-                <article class="movie"></article>
-                <article class="movie"></article>
-                <article class="movie"></article>
-                <article class="movie"></article>
-                <article class="movie"></article>
+            <section class="recent-article-container">
+                <?php foreach ($ratingMovies as $ratingMovie): ?>
+                    <article class="movie">
+                        <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($ratingMovie['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <h2><?php echo htmlspecialchars($ratingMovie['naam'], ENT_QUOTES, 'UTF-8'); ?></h2>
+                            <img src="<?php echo htmlspecialchars($ratingMovie['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($ratingMovie['naam'], ENT_QUOTES, 'UTF-8'); ?>">
+                        </a>
+                    </article>
+                <?php endforeach; ?>
+            </section>
+        </section>
+        <section class="recent-movies-container">
+            <h1 id="h1-recent">
+                <a href="#">Recent toegevoegd<i>></i></a>
+            </h1>
+            <section class="recent-article-container">
+                <?php foreach ($recentMovies as $recentMovie): ?>
+                    <article class="movie">
+                        <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($recentMovie['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <h2><?php echo htmlspecialchars($recentMovie['naam'], ENT_QUOTES, 'UTF-8'); ?></h2>
+                            <img src="<?php echo htmlspecialchars($recentMovie['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($recentMovie['naam'], ENT_QUOTES, 'UTF-8'); ?>">
+                        </a>
+                    </article>
+                <?php endforeach; ?>
             </section>
         </section>
         <section class="info-section">

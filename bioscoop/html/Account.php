@@ -1,7 +1,11 @@
 <?php
     session_start(); // Start the session at the beginning of the script
-    require_once 'User.php';
-    require_once 'database/Logout.php';
+    require_once 'Class/User.php';
+    require_once 'Logout.php';
+    require_once 'Class/Reservations.php';
+
+    $reservation = new Reservation();
+    $reservations = $reservation->fetchAll();
 
     if(!User::isLoggedIn()) {
         header('Location: login.php');
@@ -70,7 +74,30 @@
                 </section>
                 <hr>
                 <section class="reserveringen">
-                    <h2>Mijn reserveringen</h2>
+                <table id="reservations-table">
+        <thead>
+            <tr>
+                <th>Gebruiker ID</th>
+                <th>Film ID</th>
+                <th>Reserveringsdatum</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php if (!empty($reservations)): ?>
+                <?php foreach ($reservations as $reservation): ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($reservation['user_id'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?php echo htmlspecialchars($reservation['movie_id'], ENT_QUOTES, 'UTF-8'); ?></td>
+                        <td><?php echo htmlspecialchars($reservation['reservation_date'], ENT_QUOTES, 'UTF-8'); ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <tr>
+                    <td colspan="3">Geen reserveringen gevonden.</td>
+                </tr>
+            <?php endif; ?>
+        </tbody>
+    </table>
                 </section>
                 <hr>
                 <section class="uitloggen">

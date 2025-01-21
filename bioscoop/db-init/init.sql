@@ -54,6 +54,18 @@ INSERT INTO `movies` (`id`, `naam`, `beschrijving`, `duur`, `datum`, `rating`, `
 (19, 'Spider-Man: Across the Spider-Verse', 'Miles Morales katapulteert door het multiversum, waar hij een team van Spider-People tegenkomt dat belast is met het beschermen van het voortbestaan ​​ervan. Wanneer de helden botsen over de vraag hoe ze met een nieuwe dreiging moeten omgaan, moet Miles opnieuw definiëren wat het betekent om een ​​held te zijn', '2 h 20 min', '2023-06-01', '8,5/10', 'https://m.media-amazon.com/images/M/MV5BNThiZjA3MjItZGY5Ni00ZmJhLWEwN2EtOTBlYTA4Y2E0M2ZmXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg');
 
 -- --------------------------------------------------------
+CREATE TABLE `reservations` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_id` int NOT NULL,
+  `movie_id` int NOT NULL,
+  `reservation_date` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  FOREIGN KEY (`user_id`) REFERENCES `Users`(`id`),
+  FOREIGN KEY (`movie_id`) REFERENCES `movies`(`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- --------------------------------------------------------
+
 
 --
 -- Tabelstructuur voor tabel `Users`

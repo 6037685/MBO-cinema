@@ -1,6 +1,6 @@
 <?php
     session_start();
-    require_once 'Movie.php';
+    require_once 'Class/Movie.php';
     $movie = new Movie();
     $movies = $movie->fetchAll();
 ?>
@@ -27,11 +27,10 @@
             <section class="article-container">
                 <?php foreach ($movies as $movie): ?>
                     <article class="movie">
+                    <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($movie['id'], ENT_QUOTES, 'UTF-8'); ?>">
                         <h2><?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?></h2>
-                        <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($movie['id'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <img src="<?php echo htmlspecialchars($movie['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <img src="<?php echo htmlspecialchars($movie['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?>">
                         </a>
-                        <p><?php echo htmlspecialchars($movie['beschrijving'], ENT_QUOTES, 'UTF-8'); ?></p>
                     </article>
                 <?php endforeach; ?>
             </section>

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once 'User.php';
+require_once 'Class/User.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');

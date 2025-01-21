@@ -1,4 +1,4 @@
-<?php require_once 'User.php'; ?>
+<?php require_once 'Class/User.php'; ?>
 <head>
 <link rel="stylesheet" type="text/css" href="Css/styl.css">
 <link rel="stylesheet" type="text/css" href="Css/overlay.css">

@@ -1,7 +1,12 @@
 <?php
 session_start();
-require_once 'Movie.php'; // Include the Movie class
-require_once 'User.php';
+require_once 'Class/Movie.php'; // Include the Movie class
+require_once 'Class/User.php';
+require_once 'Reservations.php';
+
+$reservation = new Reservation();
+$reservations = $reservation->fetchAll();
+
 
 // Check if the user is an admin
 if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
@@ -89,10 +94,15 @@ $movies = $movie->fetchAll();
                     <input type="date" name="datum" id="datum" required>
                     <label for="rating">Rating:</label>
                     <input type="text" name="rating" id="rating" required>
-                    <label for="src">Afbeelding URL:</label>
+                    <hr>
                     <p style="color: aquamarine;"><i>Voeg de URL van de afbeelding toe!</i></p>
                     <p style="color: aquamarine;"><i>Bijvoorbeeld: <br> https://m.media-amazon.com/images/M/MV5BYWI2ZWE1NDktYmI1MC00MDAzLWI3MGYtMTgwMjkzNmJjY2ZlXkEyXkFqcGc@._V1_.jpg</i></p>
-                    <input type="text" name="src" id="src" required>
+                    <label for="src">Cover Afbeelding:</label>
+                    <p style="color: aquamarine;"><i>Gebruik graag een staand afbeelding!</i></p>
+                    <input type="text" name="image" id="cover" required>
+                    <label for="src">Achtergrond Afbeelding:</label>
+                    <p style="color: aquamarine;"><i>Gebruik graag een liggend afbeelding!</i></p>
+                    <input type="text" name="image2" id="background" required>
 
                     <?php
                         if (isset($_SESSION['bericht'])) {
@@ -127,7 +137,7 @@ $movies = $movie->fetchAll();
                                     <td><?php echo htmlspecialchars($movie['duur'], ENT_QUOTES, 'UTF-8'); ?></td>
                                     <td><?php echo htmlspecialchars($movie['datum'], ENT_QUOTES, 'UTF-8'); ?></td>
                                     <td><?php echo htmlspecialchars($movie['rating'], ENT_QUOTES, 'UTF-8'); ?></td>
-                                    <td><img src="<?php echo htmlspecialchars($movie['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?>" width="100"></td>
+                                    <td><img src="<?php echo htmlspecialchars($movie['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?>" width="100"></td>
                                     <td>
                                         <button class="movie-button" onclick="editMovie(<?php echo htmlspecialchars(json_encode($movie), ENT_QUOTES, 'UTF-8'); ?>)">Bewerken</button>
                                         <form method="GET" action="beheer.php" style="display:inline;">
