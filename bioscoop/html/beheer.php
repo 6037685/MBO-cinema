@@ -2,10 +2,7 @@
 session_start();
 require_once 'Class/Movie.php'; // Include the Movie class
 require_once 'Class/User.php';
-require_once 'Reservations.php';
 
-$reservation = new Reservation();
-$reservations = $reservation->fetchAll();
 
 
 // Check if the user is an admin
@@ -69,7 +66,7 @@ $movies = $movie->fetchAll();
     <meta name="keywords" content="beheer, films, bioscoop, Mbo Cinema">
     <title>Beheer Films - Mbo Cinema</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
-    <link rel="stylesheet" type="text/css" href="Css/overlay.cssIt">
+    <link rel="stylesheet" type="text/css" href="Css/overlay.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">

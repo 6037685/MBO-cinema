@@ -52,7 +52,8 @@ class User extends Database {
 
             if (password_verify($password, $encryptedPassword)) {
                 $_SESSION['message'] = '<p class="success">Login successful.</p>';
-                $_SESSION['user'] = $username;    
+                $_SESSION['user'] = $username;
+                $_SESSION['user_id'] = $result['id'];  
                 if ($result['Rol'] == 1) {
                     $_SESSION['role'] = 'admin'; // Store the role as admin
                     $role = 'admin';
@@ -119,7 +120,7 @@ class User extends Database {
     }
 
     public static function logout() {
-        unset($_SESSION['user']);
+        session_unset();
         session_destroy();
         header('Location: login.php');
     }

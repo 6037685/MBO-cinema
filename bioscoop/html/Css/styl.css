@@ -215,7 +215,7 @@ a:hover{
 }
 
 main{
-    min-height: 100vh;
+    min-height: 80vh;
 }
 .movie-wrapper{
     width: 100%;
@@ -251,17 +251,17 @@ main{
     height: 100%; 
     
 }
-.movie-title button{
-    padding: 12px 20px;
-    background-color: #633a49;
-    border: none;
-    border-radius: 10px;
-    color: whitesmoke;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    width: 40%;
+.reserveerButton{
+    padding: 12px 20px !important;
+    background-color: #633a49 !important;
+    border: none !important;
+    border-radius: 10px !important;
+    color: whitesmoke !important;
+    font-size: 1em !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: 10vw !important;
     font-size: .5em !important;
 }
 .movie-title h1 {
@@ -700,7 +700,6 @@ input:required:valid {
 .accountWrapper{
     display: grid;
     grid-template-columns: 1fr 3fr;
-    height: 100vh;
 }
 .accountNavWrapper{
     display: flex;
@@ -771,18 +770,7 @@ input:required:valid {
     font-size: 1.2em;
     margin: 10px 0;
 }
-.accountContent button{
-    padding: 12px 20px;
-    margin-top: 20px;
-    background-color: #633a49;
-    border: none;
-    border-radius: 5px;
-    color: #161616;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+
 .accountContent button:hover {
     background-color: #633a4979;
 }
@@ -796,7 +784,40 @@ input:required:valid {
     font-size: 1em;
     padding-bottom: 10px;
 }
+.reservations-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    background-color: #212121;
+    color: white !important;
+}
+.reservations-table thead {
+    background-color: #333333 !important;
+}
+.reservations-table th, .reservations-table td {
+    padding: 12px 15px;
+    border: 1px solid #444444;
+    display: flex;
+    justify-content: center;
+    
+}
+.reservations-table img {
+    display: none;
+}
+.reservations-table th {
+    font-weight: bold;
+}
 
+tr:hover {
+    background-color: #444444 !important;
+}
+
+
+
+tr > td > img{
+    width: 8vw;
+}
 
 /* einde account Pagina */
 
@@ -861,7 +882,7 @@ input:required:valid {
     margin: 10px 0;
 }
 .movies-layer{
-    color: aquamarine;
+    color: whitesmoke;
 }
 
 /* Beheer films Sorting */

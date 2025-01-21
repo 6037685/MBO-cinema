@@ -1,6 +1,9 @@
 <?php
 session_start();
 require_once 'Class/Movie.php';
+require_once 'Class/User.php';
+
+
 
 if (isset($_GET['id'])) {
     $movieId = intval($_GET['id']);
@@ -41,7 +44,10 @@ if (isset($_GET['id'])) {
                 <img src="<?php echo htmlspecialchars($movieDetails['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?>">
                 <article class="movie-title">
                     <h1><?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?></h1>
-                    <button id="reserveren">Reserveren</button>
+                    <form method="POST" action="ReservationHandler.php">
+                        <input type="hidden" name="movie_id" value="<?php echo htmlspecialchars($movieDetails['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <button class="reserveerButton" type="submit">Reserveren</button>
+                    </form>
                 </article>    
             </article>
             <p style="text-align: center;">✔ reserveer gemakkelijk online ✔ Reserveringen gemakkelijk te annuleren ✔ 24/7 Support </p>

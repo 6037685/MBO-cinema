@@ -5,7 +5,7 @@ class Reservation extends Database {
     private $id;
     private $user_id;
     private $movie_id;
-    private $reservation_datum;
+    private $reservation_date;
 
     // Getters and setters
     public function getId() {
@@ -53,11 +53,22 @@ class Reservation extends Database {
     }
 
     public function fetchByUserId($user_id) {
-        $query = "SELECT * FROM reservations WHERE user_id = :user_id";
+        // Haal de reserveringen op van de ingelogde gebruiker
+        $query = "SELECT reservations.*, movies.naam AS movie_naam, movies.cover AS movie_cover 
+                  FROM reservations 
+                  JOIN movies ON reservations.movie_id = movies.id 
+                  WHERE reservations.user_id = :user_id";
         $statement = $this->pdo->prepare($query);
         $statement->bindParam(':user_id', $user_id);
         $statement->execute();
         return $statement->fetchAll();
+    }
+
+    public function delete($reservation_id) {
+        $query = "DELETE FROM reservations WHERE id = :reservation_id";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':reservation_id', $reservation_id);
+        return $statement->execute();
     }
 }
 ?>
