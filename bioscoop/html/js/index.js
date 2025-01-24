@@ -32,3 +32,9 @@ function editMovie(movie) {
     document.getElementById('rating').value = movie.rating;
     document.getElementById('src').value = movie.src;
 }
+
+// Account Pagina JS
+
+$(document).ready(function() {
+    $('#reservations-table').DataTable();
+});

@@ -44,12 +44,14 @@ if (form) {
             valid = false;
         }
 
+        // Phone number validation (optional)
         if (telefoonnummer && telefoonnummer.value.length !== 10) {
             message = "Telefoonnummer moet 10 cijfers bevatten";
             document.querySelector('.phone-error').textContent = message;
             valid = false;
         }
 
+        // Prevent form submission if invalid
         if (!valid) {
             event.preventDefault();
         }
@@ -73,7 +75,7 @@ if (form) {
         telefoonnummer.value = localStorage.getItem('telefoonnummer');
     }
 
-    // het save de input van mensen
+    // Save input data to localStorage on each change
     gebruiker.addEventListener('input', function() {
         localStorage.setItem('Gebruikersnaam', gebruiker.value);
     });
