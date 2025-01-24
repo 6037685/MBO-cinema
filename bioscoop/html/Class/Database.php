@@ -5,7 +5,7 @@ abstract class Database  {
     public function __construct() {
         try {
             $host = 'db';
-            $dbname = 'Cinema';
+            $dbname = 'cinema';
             $username = 'root';
             $password = 'root';
             $this->pdo = new PDO("mysql:host=$host;dbname=$dbname", $username, $password);

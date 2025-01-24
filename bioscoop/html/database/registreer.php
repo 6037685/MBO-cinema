@@ -1,5 +1,5 @@
 <?php 
-    require 'databasetmp.php';
+    require 'Database.php';
 
     $username = htmlspecialchars($_POST['username']);
     $password = $_POST['password'];

@@ -1,6 +1,20 @@
 <?php
 session_start(); 
+$movies = [
+    'ratingMovies' => [
+        ['id' => 1, 'naam' => 'Joker: Folie à Deux', 'cover' => 'img/Movie-Img/Joker-Folie-à-Deux.jpg'],
+        ['id' => 2, 'naam' => 'Spider-Man: Into The Spider-Verse', 'cover' => 'img/Movie-Img/Spiderman-Into-SpiderVerse.jpg'],
+        ['id' => 3, 'naam' => 'Movie 3', 'cover' => 'img/movie3.jpg']
+    ],
+    'recentMovies' => [
+        ['id' => 4, 'naam' => 'Movie 4', 'cover' => 'img/movie4.jpg'],
+        ['id' => 5, 'naam' => 'Movie 5', 'cover' => 'img/movie5.jpg'],
+        ['id' => 6, 'naam' => 'Movie 6', 'cover' => 'img/movie6.jpg']
+    ]
+];
 
+$ratingMovies = $movies['ratingMovies'];
+$recentMovies = $movies['recentMovies'];
 
 ?>
 
@@ -46,14 +60,14 @@ session_start();
                 <a href="#">Populaire Films<i>></i></a>
             </h1>
             <section class="recent-article-container">
-                <?php foreach ($ratingMovies as $ratingMovie): ?>
+                <?php for ($i = 0; $i < count($ratingMovies); $i++): ?>
                     <article class="movie">
-                        <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($ratingMovie['id'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <h2><?php echo htmlspecialchars($ratingMovie['naam'], ENT_QUOTES, 'UTF-8'); ?></h2>
-                            <img src="<?php echo htmlspecialchars($ratingMovie['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($ratingMovie['naam'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($ratingMovies[$i]['id'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
+                            <h2><?php echo htmlspecialchars($ratingMovies[$i]['naam'] ?? '', ENT_QUOTES, 'UTF-8'); ?></h2>
+                            <img src="<?php echo htmlspecialchars($ratingMovies[$i]['cover'] ?? '', ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($ratingMovies[$i]['naam'] ?? '', ENT_QUOTES, 'UTF-8'); ?>">
                         </a>
                     </article>
-                <?php endforeach; ?>
+                <?php endfor; ?>
             </section>
         </section>
         <section class="recent-movies-container">
@@ -61,14 +75,14 @@ session_start();
                 <a href="#">Recent toegevoegd<i>></i></a>
             </h1>
             <section class="recent-article-container">
-                <?php foreach ($recentMovies as $recentMovie): ?>
+                <?php for ($i = 0; $i < count($recentMovies); $i++): ?>
                     <article class="movie">
-                        <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($recentMovie['id'], ENT_QUOTES, 'UTF-8'); ?>">
-                            <h2><?php echo htmlspecialchars($recentMovie['naam'], ENT_QUOTES, 'UTF-8'); ?></h2>
-                            <img src="<?php echo htmlspecialchars($recentMovie['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($recentMovie['naam'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($recentMovies[$i]['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <h2><?php echo htmlspecialchars($recentMovies[$i]['naam'], ENT_QUOTES, 'UTF-8'); ?></h2>
+                            <img src="<?php echo htmlspecialchars($recentMovies[$i]['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($recentMovies[$i]['naam'], ENT_QUOTES, 'UTF-8'); ?>">
                         </a>
                     </article>
-                <?php endforeach; ?>
+                <?php endfor; ?>
             </section>
         </section>
         <section class="info-section">
