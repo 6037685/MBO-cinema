@@ -30,7 +30,8 @@ function editMovie(movie) {
     document.getElementById('duur').value = movie.duur;
     document.getElementById('datum').value = movie.datum;
     document.getElementById('rating').value = movie.rating;
-    document.getElementById('src').value = movie.src;
+    document.getElementById('cover').value = movie.cover;
+    document.getElementById('background').value = movie.background;
 }
 
 // Account Pagina JS

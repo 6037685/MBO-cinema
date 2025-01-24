@@ -64,6 +64,16 @@ class Reservation extends Database {
         return $statement->fetchAll();
     }
 
+    public function fetchAllWithUserDetails() {
+        $query = "SELECT reservations.*, Users.username AS user_name, movies.naam AS movie_name, movies.cover AS movie_cover 
+                  FROM reservations 
+                  JOIN Users ON reservations.user_id = Users.id 
+                  JOIN movies ON reservations.movie_id = movies.id";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
+
     public function delete($reservation_id) {
         $query = "DELETE FROM reservations WHERE id = :reservation_id";
         $statement = $this->pdo->prepare($query);

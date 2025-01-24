@@ -31,6 +31,14 @@ class User extends Database {
     public static function isLoggedIn() {
         return isset($_SESSION['user']);
     }
+    
+    public function updateUserRole($username, $role) {
+        $query = "UPDATE Users SET Rol = :role WHERE username = :username";
+        $statement = $this->pdo->prepare($query);
+        $statement->bindParam(':username', $username);
+        $statement->bindParam(':role', $role, PDO::PARAM_INT);
+        return $statement->execute();
+    }
     public function UserFetchAllUsenames() {
         $query = "SELECT username FROM Users";
         $statement = $this->pdo->prepare($query);

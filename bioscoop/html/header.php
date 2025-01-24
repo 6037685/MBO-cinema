@@ -21,7 +21,7 @@
             </article>
             <article></article>
             <article></article>
-            <a><label id="search">&#x1F50E;&#xFE0E;</label></a>
+    
             
             <?php  if (User::isLoggedIn()): ?>
                 <a id="loginWrapper" href="account.php"><button id="loginButton">Account</button></a>

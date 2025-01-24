@@ -72,7 +72,7 @@ header{
 }
 .menu{
     display: grid;
-    grid-template-columns: 1fr 2.6fr 2fr 1fr .2fr .8fr;
+    grid-template-columns: 1fr 2.6fr 2fr 1fr .2fr;
     flex-direction: row;
     height: 8vh;
     padding-left: 20px;
@@ -153,8 +153,8 @@ header{
     padding-bottom: 2vh;
 }
 .article-container{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
     gap: 2vw;
 }
 #h1-recent{
@@ -188,6 +188,9 @@ header{
     overflow: hidden;
     margin-bottom: 2vh;
 }
+.movie:hover {
+    animation: identifier 0.5s ease forwards;
+}
 .movie a img {
     width: 100%;
     height: 100%;
@@ -206,6 +209,7 @@ header{
     margin: 0;
     border-radius: 0 0 20px 20px;
     text-align: center;
+    font-size: .8em;
 }
 .info-section{
     display: flex;
@@ -305,7 +309,7 @@ main{
     font-weight: bold !important;
     cursor: pointer !important;
     transition: all 0.3s ease !important;
-    width: 10vw !important;
+    width: 200px !important;
     font-size: .5em !important;
 }
 .movie-title h1 {
@@ -927,8 +931,19 @@ tr > td > img{
 }
 .movies-layer{
     color: whitesmoke;
+    padding: 20px;
 }
-
+.Beheer-info{
+    background-color: #212121;
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 10vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 /* Beheer films Sorting */
 #movies-table {
     width: 100%;
@@ -937,6 +952,19 @@ tr > td > img{
     font-size: 1em;
     background-color: #212121;
     color: white;
+}
+.Beheer-h1{
+    text-align: center;
+    background-color: #212121;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+}
+.beheer-admin{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 20px;
 }
 
 select option{
@@ -999,6 +1027,10 @@ select option{
 .movie-button:hover{
     background-color: #777 !important;
 
+}
+table.dataTable tbody tr {
+    background-color: #212121;
+    color: white;
 }
 
 
@@ -1233,16 +1265,42 @@ select option{
     .movie {
         width: 20vw;
     }
+    .article-container{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+    }
 }
 
 @media (max-width: 900px) {
     .movie {
         width: 30vw;
     }
+    .article-container{
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 600px) {
     .movie {
         width: 45vw;
+    }
+    .article-container{
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .movie-info{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center !important;
+    }
+    .movie-title{
+        text-align: center;
+    }
+    .movie-info img{
+        width: 20vw;
+    } .movie-title h1{
+        font-size: 1em;
     }
 }

@@ -1,7 +1,7 @@
 <?php
     session_start(); // Start the session at the beginning of the script
     require_once 'Class/User.php';
-    require_once '<PHP-Handelers/Logout.php';
+    require_once 'Logout.php';
     require_once 'Class/Reservation.php';
 
     if(!User::isLoggedIn()) {

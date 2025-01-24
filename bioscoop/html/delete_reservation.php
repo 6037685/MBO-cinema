@@ -18,7 +18,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $_SESSION['message'] = '<p class="error">Er is een fout opgetreden bij het verwijderen van de reservering.</p>';
     }
 
-    header('Location: Account.php');
+    header('Location: Home.php');
     exit();
 }
 ?>

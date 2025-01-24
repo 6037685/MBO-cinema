@@ -140,5 +140,6 @@ class Movie extends Database {
         $statement->bindParam(':id', $id, PDO::PARAM_INT);
         return $statement->execute();
     }
+    
 }
 ?>
