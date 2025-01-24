@@ -97,53 +97,6 @@ header{
 
 
 /* Begin Main */
-
-
-.slideshow-container {
-    margin-top: 10vh;
-    display: flex;
-    height: 80vh;
-    width: 200vw;
-    overflow: hidden;
-    position: relative;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 20px;
-}
-
-.slide-img {
-    height: 100%;
-    width: 210vh;
-    object-fit: cover;
-    border-radius: 20px;
-    transition: transform 0.5s ease-in-out;
-}
-
-.slide-img:hover {
-    transform: scale(1.05);
-}
-
-.slide-text {
-    color: white;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 10px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-.numberText {
-    color: white;
-    position: absolute;
-    background-color: rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    margin-top: 5vh;
-    left: 10vh;
-    border-radius: 10px;
-    font-size: 5em;
-    font-weight: bold;
-}
 .movie-container{
     padding: 2vw;
     display: flex;
@@ -1236,5 +1189,22 @@ select option{
         white-space: nowrap;
         content: attr(data-label);
         font-weight: bold;
+    }
+}
+@media (max-width: 1200px) {
+    .movie {
+        width: 20vw;
+    }
+}
+
+@media (max-width: 900px) {
+    .movie {
+        width: 30vw;
+    }
+}
+
+@media (max-width: 600px) {
+    .movie {
+        width: 45vw;
     }
 }
