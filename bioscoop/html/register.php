@@ -1,7 +1,20 @@
 <?php
 session_start();
+require_once 'Class/User.php';
 
-require 'database/registerDatabase.php';
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $username = htmlspecialchars($_POST['username'], ENT_QUOTES, 'UTF-8');
+    $email = filter_var($_POST['Email'], FILTER_SANITIZE_EMAIL);
+    $password = $_POST['password']; // Do not sanitize the password
+    $telefoonnmr = htmlspecialchars($_POST['Telefoonnummer'], ENT_QUOTES, 'UTF-8');
+
+    if (empty($username) || empty($email) || empty($password) || empty($telefoonnmr)) {
+        $_SESSION['message'] = '<p class="error">Vul aub alle velden in.</p>';
+    } else {
+        $user = new User();
+        $user->register($username, $email, $password, $telefoonnmr);
+    }
+}
 ?>
 
 <!DOCTYPE html>

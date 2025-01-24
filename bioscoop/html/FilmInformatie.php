@@ -1,6 +1,23 @@
 <?php
 session_start();
-require 'database/filminfoDatabase.php';
+require_once 'Class/Movie.php';
+require_once 'Class/User.php';
+
+
+
+if (isset($_GET['id'])) {
+    $movieId = intval($_GET['id']);
+    $movie = new Movie();
+    $movieDetails = $movie->fetchById($movieId);
+
+    if (!$movieDetails) {
+        header('Location: films.php');
+        exit();
+    }
+} else {
+    header('Location: films.php');
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +28,7 @@ require 'database/filminfoDatabase.php';
     <meta name="description" content="Bekijk de details van de film.">
     <meta name="author" content="Kishan & Julian">
     <meta name="keywords" content="film, bioscoop, Mbo Cinema, filmvertoning">
-    <title><?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?> - Mbo Cinema</title>
+    <title><?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?> - Mbo Cinema</title>
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
     <script defer src="js/index.js"></script>
@@ -19,14 +36,32 @@ require 'database/filminfoDatabase.php';
 <body>
     <?php include_once 'header.php'; ?>
     <main>
-     
-        <section class="movie-details">
-            <h1><?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?></h1>
-            <img src="<?php echo htmlspecialchars($movie['src'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?>">
-            <p><?php echo htmlspecialchars($movie['beschrijving'], ENT_QUOTES, 'UTF-8'); ?></p>
-            <p>Duur: <?php echo htmlspecialchars($movie['duur'], ENT_QUOTES, 'UTF-8'); ?></p>
-            <p>Release Date: <?php echo htmlspecialchars($movie['datum'], ENT_QUOTES, 'UTF-8'); ?></p>
-            <p>Rating: <?php echo htmlspecialchars($movie['rating'], ENT_QUOTES, 'UTF-8'); ?></p>
+        <section id="movie-img">
+            <img src="<?php echo htmlspecialchars($movieDetails['background'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?>">
+        </section>
+        <section class="movie-wrapper">
+            <article class="movie-info">
+                <img src="<?php echo htmlspecialchars($movieDetails['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?>">
+                <article class="movie-title">
+                    <h1><?php echo htmlspecialchars($movieDetails['naam'], ENT_QUOTES, 'UTF-8'); ?></h1>
+                    <form method="POST" action="ReservationHandler.php">
+                        <input type="hidden" name="movie_id" value="<?php echo htmlspecialchars($movieDetails['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <button class="reserveerButton" type="submit">Reserveren</button>
+                    </form>
+                </article>    
+            </article>
+            <p style="text-align: center;">✔ reserveer gemakkelijk online ✔ Reserveringen gemakkelijk te annuleren ✔ 24/7 Support </p>
+            <article class="movie-desc">
+                <article class="movie-rating">
+                    <p>Rating: <?php echo htmlspecialchars($movieDetails['rating'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <p>Duur: <?php echo htmlspecialchars($movieDetails['duur'], ENT_QUOTES, 'UTF-8'); ?></p>
+                </article>
+                <article class="movie-release">
+                    <p>Release: <?php echo htmlspecialchars($movieDetails['datum'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <br>
+                    <p><?php echo htmlspecialchars($movieDetails['beschrijving'], ENT_QUOTES, 'UTF-8'); ?></p>
+                </article> 
+            </article>
         </section>
     </main>
     <?php include_once 'footer.php'; ?>

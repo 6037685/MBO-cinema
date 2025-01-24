@@ -157,7 +157,28 @@ header{
 }
 .article-container{
     display: flex;
+    flex-wrap: wrap;
+    gap: 2vw;
 }
+#h1-recent{
+    font-size: 0.8em !important;
+    padding-bottom: 2vh;
+}
+.recent-movies-container{
+    padding: 2vw;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 5vh;
+    margin-top: 5vh;
+    justify-content: center;
+}
+.recent-article-container{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2vw;
+    
+}
+
 .movie {
     width: 12.5vw;
     height: 30vh;
@@ -169,7 +190,13 @@ header{
     position: relative;
     overflow: hidden;
     margin-bottom: 2vh;
-    
+}
+.movie a img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.5s;
 }
 .movie h2 {
     position: absolute;
@@ -182,12 +209,6 @@ header{
     margin: 0;
     border-radius: 0 0 20px 20px;
     text-align: center;
-}
-
-.movie:hover {
-    cursor: pointer;
-    transform: scale(1.1);
-    animation: identifier 1s;
 }
 .info-section{
     display: flex;
@@ -241,8 +262,110 @@ a:hover{
 }
 
 main{
-    min-height: 100vh;
+    min-height: 80vh;
 }
+.movie-wrapper{
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+}
+.movie-info{
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* Align items at the bottom */
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    font-size: 2em;
+    height: 100%; 
+    padding: 20px;
+    box-sizing: border-box; 
+}
+.movie-info img{
+    width: 10vw;
+    height: auto;
+    border-radius: 10px;;
+    padding-right: 20px;
+}
+.movie-info h1{
+    font-size: 1.5em;
+}
+.movie-title{
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; 
+    height: 100%; 
+    
+}
+.reserveerButton{
+    padding: 12px 20px !important;
+    background-color: #633a49 !important;
+    border: none !important;
+    border-radius: 10px !important;
+    color: whitesmoke !important;
+    font-size: 1em !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    width: 10vw !important;
+    font-size: .5em !important;
+}
+.movie-title h1 {
+    margin-bottom: auto; 
+}
+.movie-title button:hover {
+    filter: drop-shadow(0px 0px 10px #ffffff);
+}
+.movie-desc{
+    justify-content: center;
+    display: flex;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    box-sizing: border-box; 
+}
+.movie-rating{
+    height: 100%;
+    width: 40%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
+}
+.movie-release{
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 40%;
+}
+#movie-img {
+    position: relative;
+    width: 100%;
+    height: 50vh;
+    overflow: hidden;
+}
+#movie-img img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover; /* Crop the image to fit the container */
+}
+#movie-img::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.096) 0%, rgba(0, 0, 0, 1) 100%);
+    pointer-events: none; /* Ensure the gradient overlay does not interfere with interactions */
+}
+
 
 /*Einde Main */
 
@@ -624,7 +747,6 @@ input:required:valid {
 .accountWrapper{
     display: grid;
     grid-template-columns: 1fr 3fr;
-    height: 100vh;
 }
 .accountNavWrapper{
     display: flex;
@@ -695,18 +817,7 @@ input:required:valid {
     font-size: 1.2em;
     margin: 10px 0;
 }
-.accountContent button{
-    padding: 12px 20px;
-    margin-top: 20px;
-    background-color: #633a49;
-    border: none;
-    border-radius: 5px;
-    color: #161616;
-    font-size: 1em;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+
 .accountContent button:hover {
     background-color: #633a4979;
 }
@@ -720,7 +831,40 @@ input:required:valid {
     font-size: 1em;
     padding-bottom: 10px;
 }
+.reservations-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 1em;
+    background-color: #212121;
+    color: white !important;
+}
+.reservations-table thead {
+    background-color: #333333 !important;
+}
+.reservations-table th, .reservations-table td {
+    padding: 12px 15px;
+    border: 1px solid #444444;
+    display: flex;
+    justify-content: center;
+    
+}
+.reservations-table img {
+    display: none;
+}
+.reservations-table th {
+    font-weight: bold;
+}
 
+tr:hover {
+    background-color: #444444 !important;
+}
+
+
+
+tr > td > img{
+    width: 8vw;
+}
 
 /* einde account Pagina */
 
@@ -785,7 +929,7 @@ input:required:valid {
     margin: 10px 0;
 }
 .movies-layer{
-    color: aquamarine;
+    color: whitesmoke;
 }
 
 /* Beheer films Sorting */

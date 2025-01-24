@@ -1,9 +1,9 @@
 <?php
-session_start();
-include 'database/filmsDatabse.php';
-
+    session_start();
+    require_once 'Class/Movie.php';
+    $movie = new Movie();
+    $movies = $movie->fetchAll();
 ?>
-
 <!DOCTYPE html>
 <html lang="nl">
 <head>
@@ -25,19 +25,14 @@ include 'database/filmsDatabse.php';
                 <a href="#">Populaire Films<i>></i></a>
             </h1>
             <section class="article-container">
-                <!-- Loopt door de resultaten heen en displayed informatie -->
-                <?php if (!empty($movies)): ?>
-                    <?php foreach ($movies as $movie): ?>
-                        <!-- Gebruikt ?id om specefieke pagina te tonen met informatie -->
-                        <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($movie['id'], ENT_QUOTES, 'UTF-8'); ?>" class="movie-link">
-                            <article class="movie" style="background-image: url('<?php echo htmlspecialchars($movie['src'], ENT_QUOTES, 'UTF-8'); ?>');">
-                                <h2><?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?></h2>
-                            </article>
+                <?php foreach ($movies as $movie): ?>
+                    <article class="movie">
+                    <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($movie['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                        <h2><?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?></h2>
+                            <img src="<?php echo htmlspecialchars($movie['cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($movie['naam'], ENT_QUOTES, 'UTF-8'); ?>">
                         </a>
-                    <?php endforeach; ?>
-                <?php else: ?>  
-                    <p>Geen films gevonden</p>
-                <?php endif; ?>
+                    </article>
+                <?php endforeach; ?>
             </section>
         </section>
     </main>

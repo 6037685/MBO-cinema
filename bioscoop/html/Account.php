@@ -1,9 +1,21 @@
 <?php
     session_start(); // Start the session at the beginning of the script
+    require_once 'Class/User.php';
+    require_once 'Logout.php';
+    require_once 'Class/Reservation.php';
 
-    require 'database/Logout.php';
-    
-    ?>
+    if(!User::isLoggedIn()) {
+        header('Location: login.php');
+        exit();
+    }
+
+    $user_id = $_SESSION['user_id'];
+    $reservation = new Reservation();
+    $reservations = $reservation->fetchByUserId($user_id);
+
+    $user = new User();
+    $userDetails = $user->fetchUserDetails($_SESSION['user']);
+?>
                 
 <!DOCTYPE html>
 <html lang="nl">
@@ -17,6 +29,9 @@
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
     <script defer src="js/index.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
 </head>
 <body>
     <?php include_once 'header.php'; ?>
@@ -37,9 +52,9 @@
 
                 <section class="accountInfo">
                     <h2>Account Informatie</h2>
-                    <p>Gebruikersnaam: <?php echo $_SESSION['username']; ?></p>
-                    <p>Email: <?php echo $_SESSION['email']; ?></p>
-                    <p>Telefoonnummer: <?php echo $_SESSION['phone']; ?></p>
+                    <p>Gebruikersnaam: <?php echo htmlspecialchars($userDetails['username'], ENT_QUOTES, 'UTF-8')?></p>
+                    <p>Email: <?php echo htmlspecialchars($userDetails['email'], ENT_QUOTES, 'UTF-8'); ?></p>
+                    <p>Telefoonnummer: <?php echo htmlspecialchars($userDetails['telnmr'], ENT_QUOTES, 'UTF-8'); ?></p>
                 </section>
                 <hr>
                 <section class="wachtwoord">
@@ -62,16 +77,47 @@
                     </form>
                 </section>
                 <hr>
-                <section class="reserveringen">
-                    <h2>Mijn reserveringen</h2>
-                </section>
+                <article class="movies-layer">
+                <h2>Bestaande Films</h2>
+                <table id="movies-table">
+                    <thead>
+                        <tr>
+                            <th>Naam</th>
+                            <th>Datum</th>
+                            <th>Afbeelding</th>
+                            <th>Acties</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                            <?php if (!empty($reservations)): ?>
+                                <?php foreach ($reservations as $reservation): ?>
+                                    <tr>
+                                        <td><?php echo htmlspecialchars($reservation['movie_naam'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                        <td><?php echo htmlspecialchars($reservation['reservation_date'], ENT_QUOTES, 'UTF-8'); ?></td>
+                                        <td><img src="<?php echo htmlspecialchars($reservation['movie_cover'], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($reservation['movie_naam'], ENT_QUOTES, 'UTF-8'); ?>"></td>
+                                        <td>
+                                            <form method="POST" action="delete_reservation.php" style="display:inline;">
+                                                <input type="hidden" name="reservation_id" value="<?php echo htmlspecialchars($reservation['id'], ENT_QUOTES, 'UTF-8'); ?>">
+                                                <button type="submit" class="reservation-button" onclick="return confirm('Weet je zeker dat je deze reservering wilt verwijderen?')">Verwijderen</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
+                            <?php else: ?>
+                                <tr>
+                                    <td colspan="3">Geen reserveringen gevonden.</td>
+                                </tr>
+                            <?php endif; ?>
+                        </tbody>
+                </table>
+            </article>
                 <hr>
                 <section class="uitloggen">
                     <form method="POST">
                         <button type="submit" name="logout">Uitloggen</button>
                     </form>
                 </section>
-                </article>    
+            </article>   
         </section>
     </main>
     <?php include_once 'footer.php'; ?>
