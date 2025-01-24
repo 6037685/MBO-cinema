@@ -884,7 +884,13 @@ tr > td > img{
 .movies-layer{
     color: whitesmoke;
 }
-
+.Beheer-info{
+    background-color: #212121;
+    color: white;
+    border-radius: 20px;
+    padding: 20px;
+    margin-top: 10vh;
+}
 /* Beheer films Sorting */
 #movies-table {
     width: 100%;

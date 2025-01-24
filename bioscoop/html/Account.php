@@ -1,7 +1,7 @@
 <?php
     session_start(); // Start the session at the beginning of the script
     require_once 'Class/User.php';
-    require_once 'Logout.php';
+    require_once '<PHP-Handelers/Logout.php';
     require_once 'Class/Reservation.php';
 
     if(!User::isLoggedIn()) {
@@ -78,7 +78,7 @@
                 </section>
                 <hr>
                 <article class="movies-layer">
-                <h2>Bestaande Films</h2>
+                <h2>Reservations</h2>
                 <table id="movies-table">
                     <thead>
                         <tr>
