@@ -28,31 +28,34 @@ $ratingMovies = $movie->fetchRating();
     <script defer src="js/index.js"></script>
     <script defer src="js/slideshow.js"></script>
     <script defer src="Reserveren.js"></script>
+    <script defer src="js/Popup.js"></script>
 </head>
 <body>
     <?php include_once 'header.php'; ?>
     <main>
     <section class="slideshow-container">
-    <?php
-    for ($Film = 0; $Film < count($recentMovies); $Film++):
-        $movie = $recentMovies[$Film]; 
-    ?>
-        <article class="slidesFade">
-            <article class="numberText"><?php echo htmlspecialchars($movie['naam']); ?></article>
-            <img class="slide-img" src="<?php echo htmlspecialchars($movie['background']); ?>" alt="<?php echo htmlspecialchars($movie['naam']); ?>">
-            <article class="slide-text"><?php echo htmlspecialchars($movie['beschrijving']); ?></article>
-        </article>
+        <?php
+        for ($Film = 0; $Film < count($recentMovies); $Film++):
+            $movie = $recentMovies[$Film]; 
+        ?>
+        <a class="SlidesContainer" href="FilmInformatie.php?id=<?php echo htmlspecialchars($movie['id'], ENT_QUOTES, 'UTF-8'); ?>">
+            <article class="slidesFade" style="background-image: url('<?php echo htmlspecialchars($movie['background'], ENT_QUOTES, 'UTF-8'); ?>');">
+                <article class="slidesContent">
+                    <article class="slidesContentInfo">
+                        <p class="Name"><?php echo htmlspecialchars($movie['naam']); ?></p>
+                        <p class="slide-text"><?php echo htmlspecialchars($movie['beschrijving']); ?></p>
+                    </article>
+                </article>
+            </article>
+        </a>
     <?php endfor; ?>
 </section>
-
-        <section class="Placeholder"> 
-            <h1></h1>
-        </section>
         <section class="recent-movies-container">
             <h1 id="h1-recent">
                 <a href="#">Populaire Films<i>></i></a>
             </h1>
             <section class="recent-article-container">
+
                 <?php foreach ($ratingMovies as $ratingMovie): ?>
                     <article class="movie">
                         <a href="FilmInformatie.php?id=<?php echo htmlspecialchars($ratingMovie['id'], ENT_QUOTES, 'UTF-8'); ?>">
@@ -80,17 +83,17 @@ $ratingMovies = $movie->fetchRating();
         </section>
         <section class="info-section">
             <article id="info-article">
-                <img src="img/Circle-placeholder.png">
+                <img src="img/Worker.png">
                 <h1>Beveiligd</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta incidunt voluptate nostrum ullam delectus ut, eum consectetur atque accusantium eius culpa suscipit nobis voluptatum aut distinctio, fugiat magni debitis non.</p>
             </article>
             <article id="info-article">
-                <img src="img/Circle-placeholder.png">
+                <img src="img/ticket.png">
                 <h1>Gemakkelijk tickets reserveren</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta incidunt voluptate nostrum ullam delectus ut, eum consectetur atque accusantium eius culpa suscipit nobis voluptatum aut distinctio, fugiat magni debitis non.</p>
             </article>
             <article id="info-article">
-                <img src="img/Circle-placeholder.png">
+                <img src="img/phone-call.png">
                 <h1>Contact</h1>
                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta incidunt voluptate nostrum ullam delectus ut, eum consectetur atque accusantium eius culpa suscipit nobis voluptatum aut distinctio, fugiat magni debitis non.</p>
             </article>

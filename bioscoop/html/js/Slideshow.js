@@ -1,5 +1,5 @@
 let teller = 0;
-const slides = document.getElementsByClassName('slidesFade');
+const slides = document.getElementsByClassName('SlidesContainer');
 function slideshow() {
     for (let slide = 0; slide < slides.length; slide++) {
         slides[slide].style.display = 'none'; 
@@ -15,6 +15,5 @@ function slideshow() {
 setInterval(slideshow, 6000);
 slideshow();
 
-const slideText = document.getElementsByClassName('slide-text');
 
 

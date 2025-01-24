@@ -50,6 +50,14 @@ if (isset($_GET['id'])) {
                     </form>
                 </article>    
             </article>
+            <p style="text-align: center;" class="error">
+                <?php
+                    if (isset($_SESSION['message'])) {
+                        echo $_SESSION['message'];
+                        unset($_SESSION['message']); 
+                    }?>
+            </p>
+        
             <p style="text-align: center;">✔ reserveer gemakkelijk online ✔ Reserveringen gemakkelijk te annuleren ✔ 24/7 Support </p>
             <article class="movie-desc">
                 <article class="movie-rating">

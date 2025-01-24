@@ -37,16 +37,6 @@
     <?php include_once 'header.php'; ?>
     <main>
         <section class="accountWrapper">
-            <article class="accountNavWrapper">
-                <nav class="accountNav">
-                    <ul>
-                        <li><a href="#">Account Informatie</a></li><hr>
-                        <li><a href="#">Wachtwoord Veranderen</a></li><hr>
-                        <li><a href="#">Mijn reserveringen</a></li><hr>
-                        <li><a href="#">Uitloggen</a></li>
-                    </ul>
-                </nav>
-            </article>
 
             <article class="accountContent">
 
@@ -55,26 +45,6 @@
                     <p>Gebruikersnaam: <?php echo htmlspecialchars($userDetails['username'], ENT_QUOTES, 'UTF-8')?></p>
                     <p>Email: <?php echo htmlspecialchars($userDetails['email'], ENT_QUOTES, 'UTF-8'); ?></p>
                     <p>Telefoonnummer: <?php echo htmlspecialchars($userDetails['telnmr'], ENT_QUOTES, 'UTF-8'); ?></p>
-                </section>
-                <hr>
-                <section class="wachtwoord">
-                    <h2>Wachtwoord Veranderen</h2>
-                    <form method="POST">
-                        <label for="oldPassword">Oud wachtwoord</label>
-                        <input type="password" id="oldPassword" name="oldPassword" placeholder="Oud wachtwoord" required>
-                            
-                        <label for="newPassword">Nieuw wachtwoord</label>
-                        <input type="password" id="newPassword" name="newPassword" placeholder="Nieuw wachtwoord" required>
-                            
-                        <label for="confirmPassword">Bevestig wachtwoord</label>
-                        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Bevestig wachtwoord" required>
-                         
-                        <article class="forgot-password">
-                            <a href="#">Wachtwoord vergeten?</a>
-                        </article>
-                        
-                        <button type="submit">Wachtwoord veranderen</button>
-                    </form>
                 </section>
                 <hr>
                 <article class="movies-layer">

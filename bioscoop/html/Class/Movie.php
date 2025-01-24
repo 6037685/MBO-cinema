@@ -90,7 +90,7 @@ class Movie extends Database {
     }
     public function fetchRecent() {
         // Query fetched de top 6 films op basis van datum en sorteert deze op datum
-        $query = "SELECT * FROM movies ORDER BY datum DESC LIMIT 6";
+        $query = "SELECT * FROM movies ORDER BY id DESC LIMIT 6";
         $statement = $this->pdo->prepare($query);
         $statement->execute();
         return $statement->fetchAll();

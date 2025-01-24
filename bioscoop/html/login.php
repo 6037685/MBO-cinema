@@ -40,9 +40,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         <label for="password">Wachtwoord</label>
                         <input type="password" id="password" name="password" placeholder="Wachtwoord" required>
                         
-                        <article class="forgot-password">
-                            <a href="#">Wachtwoord vergeten?</a>
-                        </article>
                         <article>
                         <!-- display fout message -->
                         <?php 

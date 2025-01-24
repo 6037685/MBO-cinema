@@ -39,3 +39,4 @@ function editMovie(movie) {
 $(document).ready(function() {
     $('#reservations-table').DataTable();
 });
+

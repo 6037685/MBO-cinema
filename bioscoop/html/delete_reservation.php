@@ -12,11 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $reservation_id = intval($_POST['reservation_id']);
     $reservation = new Reservation();
 
-    if ($reservation->delete($reservation_id)) {
-        $_SESSION['message'] = '<p class="success">Reservering succesvol verwijderd!</p>';
-    } else {
-        $_SESSION['message'] = '<p class="error">Er is een fout opgetreden bij het verwijderen van de reservering.</p>';
-    }
+    $reservation->delete($reservation_id);
 
     header('Location: Home.php');
     exit();

@@ -19,9 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $reservation->setReservationDate($reservation_date);
 
     if ($reservation->create()) {
-        $_SESSION['message'] = '<p class="success">Reservering succesvol!</p>';
+        $_SESSION['message'] = '<p style="text-align: center;" class="success">Reservering succesvol!</p>';
     } else {
-        $_SESSION['message'] = '<p class="error">Er is een fout opgetreden bij het maken van de reservering.</p>';
+        $_SESSION['message'] = '<p style="text-align: center;" class="error">Er is een fout opgetreden bij het maken van de reservering.</p>';
     }
 
     header('Location: FilmInformatie.php?id=' . $movie_id);

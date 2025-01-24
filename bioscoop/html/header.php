@@ -2,6 +2,11 @@
 <head>
 <link rel="stylesheet" type="text/css" href="Css/styl.css">
 <link rel="stylesheet" type="text/css" href="Css/overlay.css">
+<script defer src="js/index.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
+<script defer src="js/Popup.js"></script>
 </head>
 
 <?php require_once 'overlay.php'; ?>
