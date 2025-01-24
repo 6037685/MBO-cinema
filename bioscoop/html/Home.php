@@ -26,11 +26,25 @@ $ratingMovies = $movie->fetchRating();
     <link rel="stylesheet" type="text/css" href="Css/styl.css">
     <link rel="stylesheet" type="text/css" href="Css/overlay.css">
     <script defer src="js/index.js"></script>
+    <script defer src="js/slideshow.js"></script>
     <script defer src="Reserveren.js"></script>
 </head>
 <body>
     <?php include_once 'header.php'; ?>
     <main>
+    <section class="slideshow-container">
+    <?php
+    for ($Film = 0; $Film < count($recentMovies); $Film++):
+        $movie = $recentMovies[$Film]; 
+    ?>
+        <article class="slidesFade">
+            <article class="numberText"><?php echo htmlspecialchars($movie['naam']); ?></article>
+            <img class="slide-img" src="<?php echo htmlspecialchars($movie['background']); ?>" alt="<?php echo htmlspecialchars($movie['naam']); ?>">
+            <article class="slide-text"><?php echo htmlspecialchars($movie['beschrijving']); ?></article>
+        </article>
+    <?php endfor; ?>
+</section>
+
         <section class="Placeholder"> 
             <h1></h1>
         </section>
