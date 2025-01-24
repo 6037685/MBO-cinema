@@ -99,12 +99,50 @@ header{
 /* Begin Main */
 
 
-.Placeholder{
-    background-image: url('../img/Placeholder.png');
-    background-color: white;
-    background-size: contain;
-    height: 60vh;
-    margin-bottom: 10vh;
+.slideshow-container {
+    margin-top: 10vh;
+    display: flex;
+    height: 80vh;
+    width: 200vw;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+}
+
+.slide-img {
+    height: 100%;
+    width: 210vh;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide-img:hover {
+    transform: scale(1.05);
+}
+
+.slide-text {
+    color: white;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.numberText {
+    color: white;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-top: 5vh;
+    left: 10vh;
+    border-radius: 10px;
+    font-size: 5em;
+    font-weight: bold;
 }
 .movie-container{
     padding: 2vw;
