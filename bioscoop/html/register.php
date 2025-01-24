@@ -8,12 +8,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $_POST['password']; // Do not sanitize the password
     $telefoonnmr = htmlspecialchars($_POST['Telefoonnummer'], ENT_QUOTES, 'UTF-8');
 
-    if (empty($username) || empty($email) || empty($password) || empty($telefoonnmr)) {
-        $_SESSION['message'] = '<p class="error">Vul aub alle velden in.</p>';
-    } else {
+    if (!empty($username) || !empty($email) || !empty($password) || !empty($telefoonnmr)) {
         $user = new User();
         $user->register($username, $email, $password, $telefoonnmr);
-    }
+    };
 }
 ?>
 

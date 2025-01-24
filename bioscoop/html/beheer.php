@@ -12,6 +12,10 @@ if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
 }
 
 $movie = new Movie();
+$user = new User();
+
+$AdminDetails = $user->fetchUserDetails($_SESSION['user']);
+$usernames = $user->UserFetchAllUsenames();
 
 // Handle form submission for creating and updating movies
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -75,7 +79,20 @@ $movies = $movie->fetchAll();
 <body>
     <?php include_once 'header.php'; ?>
     <main>
+        <section class="Beheer-info">
+            <h1>Beheerder paneel</h1>
+            <h2><b>Welkom <?php echo htmlspecialchars($AdminDetails['username']) ?>!</b></h2>
+            <p>
+                Dit is de beheerder paneel.<br>
+                Je kan films toevoegen, bewerken en verwijderen.<br>
+                Ook kan je nieuwe admins toevoegen.<br>
+                Daarnaast is het ook mogelijk om alle reserveringen te beheren.<br>
+                <a href="home.php">Terug naar home</a>
+            </p>
+        </section>
+        
         <section class="beheer-container">
+            <h1>Beheer Films</h1>
             <article class="beheer-layer">
                 <form method="POST" action="beheer.php" class="beheer-form">
                     <h2>Film Toevoegen</h2>
@@ -153,6 +170,23 @@ $movies = $movie->fetchAll();
                 </table>
             </article>
         </section>
+        
+        <section class="beheer-admin">
+            <form method="POST" action="beheer.php" class="admin-form">
+                <h2>Admin Toevoegen</h2>
+                <p>Voeg een nieuwe admin toe.</p>
+                <label for="username">Gebruikersnaam:</label>
+                <select name="username" id="username" required>
+                    <?php foreach ($usernames as $username): ?>
+                        <option value="<?php echo htmlspecialchars($username['username'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($username['username'], ENT_QUOTES, 'UTF-8'); ?></option>
+                    <?php endforeach; ?>
+                </select>
+                <button type="submit">Toevoegen</button>
+            </form>
+        </section>
+
+        <section class="beheer-reserveringen">
+        </section>     
     </main>
     <?php include_once 'footer.php'; ?>
 </body>

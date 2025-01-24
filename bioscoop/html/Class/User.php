@@ -31,6 +31,12 @@ class User extends Database {
     public static function isLoggedIn() {
         return isset($_SESSION['user']);
     }
+    public function UserFetchAllUsenames() {
+        $query = "SELECT username FROM Users";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute();
+        return $statement->fetchAll();
+    }
     
     public function fetchUserDetails($username) {
         $query = "SELECT * FROM Users WHERE username = :username";
